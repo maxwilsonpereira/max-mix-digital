@@ -1,0 +1,14 @@
+// global.JS
+export const LAST_PAGE_TRUE = "LAST_PAGE_TRUE";
+export const LAST_PAGE_FALSE = "LAST_PAGE_FALSE";
+export const FIRST_PAGE_TRUE = "FIRST_PAGE_TRUE";
+export const FIRST_PAGE_FALSE = "FIRST_PAGE_FALSE";
+
+export const DIRECTION_DOWN_TRUE = "DIRECTION_DOWN_TRUE";
+export const DIRECTION_DOWN_TO_UP = "DIRECTION_DOWN_TO_UP";
+
+export const SHOW_MENU_TO_FALSE = "SHOW_MENU_TO_FALSE";
+export const SHOW_MENU_TO_TRUE = "SHOW_MENU_TO_TRUE";
+
+export const SWIPED_UP = "SWIPED_UP";
+export const SWIPED_DOWN = "SWIPED_DOWN";

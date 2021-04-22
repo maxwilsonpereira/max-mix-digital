@@ -1,0 +1,90 @@
+.ButtonBuy {
+  color: #d6d6d6;
+  padding: 6px 30px;
+  font-size: 1em;
+  border-radius: 10px;
+  background-color: Transparent;
+  box-sizing: border-box;
+  outline: 0;
+  border: 1px solid #d6d6d6;
+  transition: 0.3s;
+}
+.ButtonBuy:hover {
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(204, 204, 204, 0.2);
+  border: 1px solid #d6d6d6;
+  box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.75);
+  transform: translateY(-2%);
+}
+
+.BlueBtn {
+  background-color: #0155a0;
+  color: white;
+  height: 43px;
+  border: 1px solid #0155a0;
+  border-bottom: 2px solid #023058;
+}
+.BlueBtn:hover {
+  background-color: white;
+  color: #0155a0;
+  border: 1px solid #023058;
+}
+
+.OrangeBtn {
+  background-color: #e8ba3c;
+  color: white;
+  height: 43px;
+  border: 1px solid #e8ba3c;
+  border-bottom: 2px solid #bd8d0c;
+}
+.OrangeBtn:hover {
+  background-color: white;
+  color: #e8ba3c;
+  border: 1px solid #bd8d0c;
+}
+
+.BlueOppositeBtn {
+  background-color: white;
+  color: #0155a0;
+  height: 60px;
+  width: 220px;
+  /* padding: 15px 60px; */
+  border: 1px solid #0155a0;
+  border-bottom: 2px solid #023058;
+}
+.BlueOppositeBtn:hover {
+  background-color: #0155a0;
+  color: white;
+  border: 1px solid #023058;
+}
+.GreenOrangeBtn {
+  font-size: 1.8em;
+  color: white;
+  background-color: #31ae75;
+  height: 80px;
+  width: 250px;
+  /* padding: 15px 60px; */
+  border: 1px solid #31ae75;
+  border-bottom: 2px solid #1e8658;
+}
+.GreenOrangeBtn:hover {
+  color: white;
+  border: 1px solid #c4441e;
+  border-bottom: 2px solid #fb5f2e;
+  background-color: #fb5f2e; /* DISCOUNT */
+}
+
+.colorsWebSite {
+  color: #8f2c31;
+  color: #0155a0; /* hover */
+  color: #4d7994; /* Section Title */
+  color: #444444;
+  color: #fb5f2e; /* DISCOUNT */
+  background-color: #31ae75;
+  color: #e8ba3c;
+  background-color: #145a83; /* Comprar Declaração Box */
+  background-color: #033959; /* FOOTER */
+  background-color: #f3f3f3; /* SectionGrey */
+  background-color: #535353; /* SectionGreyDark */
+  background-color: #145a83; /* SectionBlueDark */
+}

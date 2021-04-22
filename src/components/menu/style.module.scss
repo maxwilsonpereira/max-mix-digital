@@ -1,0 +1,13 @@
+.FadeOutMenu {
+  opacity: 0;
+  animation: 1s linear;
+  animation-name: fadeOutMenu;
+}
+@keyframes fadeOutMenu {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

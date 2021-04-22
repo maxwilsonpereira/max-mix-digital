@@ -1,0 +1,184 @@
+// IMAGES ARE HERE:
+@import "../../assets/images/homePage/introPage6.scss";
+// ANIMATIONS:
+@import "../../styles/animations.scss";
+@import "../../styles/texts.scss";
+@import "../../styles/zoomImages.scss";
+// VARIABLES
+@import "../../styles/variables.scss";
+
+.grid {
+  position: absolute;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 6;
+  height: $heightGlobal;
+  width: $widthGlobal;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "leftFull rightFull"
+    "leftFull rightFull";
+}
+.gridLeft {
+  grid-area: leftFull;
+  // background-color: rgb(17, 64, 100);
+  background-color: rgb(119, 47, 43);
+  position: relative;
+  // background-color: rgb(18, 18, 18);
+  height: $heightGlobal;
+  // width: 100vw;
+}
+.gridRight {
+  grid-area: rightFull;
+  position: relative;
+  background-color: rgb(0, 0, 0);
+
+  height: $heightGlobal;
+  // background-image: url("../../assets/images/homePage/ready.jpg");
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: grayscale(50%) brightness(70%);
+  //   text-align: center;
+  //   overflow: hidden;
+  // TRANSITIONS PROVOKE IMAGE TO BOUNCE OUT AND IN! DONT USE HERE:
+  // transition: 0.3s ease-in-out;
+}
+
+.grid2 {
+  position: absolute;
+  overflow: hidden;
+  z-index: 6;
+  pointer-events: none;
+  height: $heightGlobal;
+  width: $widthGlobal;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "grid2LeftFull grid2RightFull"
+    "grid2LeftFull grid2RightFull";
+}
+.grid2Left {
+  grid-area: grid2LeftFull;
+  position: relative;
+  // background-color: rgb(119, 47, 43);
+  background-color: rgb(17, 64, 100);
+  height: $heightGlobal;
+  // width: 100vw;
+}
+.grid2Right {
+  grid-area: grid2RightFull;
+  position: relative;
+  background-color: rgb(0, 0, 0);
+  height: $heightGlobal;
+  // background-image: url("../../assets/images/homePage/contact.jpg");
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: grayscale(50%) brightness(80%);
+  // TRANSITIONS PROVOKE IMAGE TO BOUNCE OUT AND IN! DONT USE HERE:
+  // transition: 0.3s ease-in-out;
+  //   text-align: center;
+  //   overflow: hidden;
+}
+
+.clickContact {
+  cursor: pointer;
+}
+.clickContact:hover {
+  transition: 0.3s linear;
+  text-shadow: 5px 5px 3px rgba(0, 0, 0, 0.7);
+}
+.gridLeft h1 {
+  @include textH1Messages();
+}
+.gridLeft h2 {
+  @include textH1MessagesBigger();
+}
+.grid2Left h1 {
+  @include textH1Messages();
+}
+.grid2Left h2 {
+  @include textH1MessagesBigger();
+}
+
+// ANIMATIONS:
+// LOAD COMPONENT - STAY OUTSIDE:
+.stayOutside .gridLeft {
+  @include stayOutUp();
+}
+.stayOutside .gridRight {
+  @include stayOutDown();
+}
+.stayOutside .grid2Left {
+  @include stayOutsideLeft();
+}
+.stayOutside .grid2Right {
+  @include stayOutsideRight();
+}
+// ENTER:
+.enterPage6 .gridLeft {
+  @include upToDown();
+}
+.enterPage6 .gridRight {
+  @include downToUp();
+}
+.enterPage6 .gridLeft h1 {
+  @include textComeUpRightToLeftHidded();
+}
+.enterPage6 .grid2Left {
+  @include leftGoesInFromLeft();
+}
+.enterPage6 .grid2Right {
+  @include rightGoesInFromRight();
+}
+.enterPage6 .grid2Left h2 {
+  @include textComeUpRightToLeftHidded();
+}
+// EXIT:
+.exitPage6 .gridLeft {
+  @include upExit();
+}
+.exitPage6 .gridRight {
+  @include downExit();
+}
+.exitPage6 .grid2Left {
+  @include upExit();
+}
+.exitPage6 .grid2Right {
+  @include downExit();
+}
+// .image {
+//   height: 100%;
+//   background-image: url("../../assets/images/homePage/wordwide.jpg");
+//   background-color: rgb(18, 18, 18);
+//   background-position: 45%;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   filter: grayscale(50%) brightness(80%);
+//   animation-name: fadeImagesDD;
+//   animation: 8s ease-in-out infinite;
+// }
+// @keyframes fadeImagesDD {
+//   0% {
+//     background-image: url("../../assets/images/homePage/wordwide.jpg");
+//   }
+//   50% {
+//     background-image: url("../../assets/images/homePage/doIt.jpg");
+//   }
+//   100% {
+//     background-image: url("../../assets/images/homePage/doIt.jpg");
+//   }
+// }
+
+// .backImage {
+//   height: 100%;
+//   background-image: url("../../assets/images/homePage/dreamsReality.jpg");
+//   background-color: rgb(18, 18, 18);
+//   background-position: 45%;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+// }

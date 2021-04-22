@@ -1,0 +1,240 @@
+$fontColor: #d6d6d6;
+/* @mixin cover() {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+} */
+
+.containerContact {
+  position: absolute;
+  z-index: 30;
+  max-width: 500px;
+  margin: 0 auto !important;
+  // padding: 50px 0;
+  // top: 30px;
+  // top: 40%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  width: 90%;
+  animation-duration: 2.5s;
+  animation-name: fadeIn;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.marginTop {
+  margin-top: 150px;
+}
+.closeFormClass {
+  opacity: 0;
+  animation: 0.6s linear;
+  animation-fill-mode: backwards;
+  animation-name: fadeOutForm;
+}
+@keyframes fadeOutForm {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+.contactGrid {
+  display: grid;
+  grid-template-columns: 100%; /* 1 column */
+  box-sizing: border-box;
+  justify-content: center;
+  column-gap: 50px;
+  // padding: 40px;
+}
+.contactGrid h1 {
+  /* color: rgb(200, 200, 200); */
+  color: $fontColor;
+  text-shadow: 2.2px 2.2px 2px rgba(0, 0, 0, 0.8);
+  font-family: LibreBaskerville-Regular, georgia, Arial, Helvetica, sans-serif;
+  /* text-transform: uppercase !important; */
+  border-bottom: 2px solid currentColor;
+  display: inline-block;
+  font-size: 2rem;
+  letter-spacing: 0.15em;
+  word-spacing: 0em;
+  line-height: 1.5em;
+  text-transform: none;
+  font-weight: normal;
+}
+.contactGrid h3 {
+  /* color: rgb(200, 200, 200); */
+  color: $fontColor;
+  /* text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8); */
+  font-family: LibreBaskerville-Regular, georgia, Arial, Helvetica, sans-serif;
+  /* text-transform: uppercase !important; */
+  font-size: 1.5rem;
+  // letter-spacing: 0.1em;
+  word-spacing: 0em;
+  line-height: 1em;
+  text-transform: none;
+  font-weight: normal;
+}
+.EmailLog {
+  margin-right: 15px;
+  transform: translateY(25%);
+}
+.SubmitBtn {
+  text-align: right;
+}
+.contactGrid input,
+textarea {
+  width: 100%;
+  margin: 10px 0;
+  /* border-radius: 5px; */
+  padding: 10px 10px;
+  font-size: 1.2em;
+  /* color: rgb(50, 50, 50); */
+  border: none;
+  color: $fontColor;
+  background-color: transparent !important;
+  border-bottom: 1px solid rgb(50, 50, 50);
+  /* outline: none; */
+
+  border-color: $fontColor;
+  /* border-width: 0px; */
+  /* box-shadow: inset 0px 0px 5px 2px rgb(0, 0, 0); */
+}
+::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: $fontColor !important;
+  opacity: 0.8;
+}
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: $fontColor !important;
+  opacity: 0.8;
+}
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: $fontColor !important;
+  opacity: 0.8;
+}
+:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: $fontColor !important;
+  opacity: 0.8;
+}
+.contactGrid textarea {
+  min-height: 120px;
+  resize: none;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.contactGrid input:focus {
+  box-shadow: inset 0px 0px 2px 1px black;
+  background-color: transparent !important;
+  // background-color: rgb(0, 0, 0) !important;
+  // color: black !important;
+}
+.contactGrid input:valid {
+  box-shadow: inset 0px 0px 2px 1px black;
+  background-color: transparent !important;
+  // background-color: rgb(105, 0, 40) !important;
+  // color: black !important;
+}
+.contactGrid input:invalid {
+  box-shadow: inset 0px 0px 2px 1px black;
+  background-color: transparent !important;
+  // background-color: rgb(105, 0, 40) !important;
+  // color: black !important;
+}
+
+.contactGrid textarea:focus {
+  box-shadow: inset 0px 0px 2px 1px black;
+  background-color: transparent !important;
+  // background-color: rgb(0, 0, 0) !important;
+  // color: black !important;
+}
+.contactGrid textarea:valid {
+  box-shadow: inset 0px 0px 2px 1px black;
+  background-color: transparent !important;
+  // background-color: rgb(105, 0, 40) !important;
+  // color: black !important;
+}
+.contactGrid textarea:invalid {
+  box-shadow: inset 0px 0px 2px 1px black;
+  background-color: transparent !important;
+  // background-color: rgb(105, 0, 40) !important;
+  // color: black !important;
+}
+.MessageToUser {
+  // text-align: center;
+  font-family: LibreBaskerville-Regular, georgia, Arial, Helvetica, sans-serif;
+  /* border-radius: 10px; */
+  font-size: 1.3rem;
+  padding: 20px 0px 15px 0px !important;
+  font-weight: bold;
+  // font-style: italic;
+  /* background-color: #550000;
+  /* box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
+  /* color: rgb(50, 50, 50); */
+  color: #a82d29 !important;
+}
+.mobileOnly {
+  display: none;
+}
+// @media (max-width: 1000px) {
+//   .contactGrid h3 {
+//     font-size: 1.6rem;
+//     letter-spacing: 0.1em;
+//     line-height: 1.2em;
+//   }
+// }
+/* ***** MOBILE ***** */
+@media (max-width: 700px) {
+  .marginTop {
+    margin-top: 60px;
+  }
+  .mobileOnly {
+    display: inline;
+  }
+  .desktopOnly {
+    display: none;
+  }
+  .contactGrid {
+    grid-template-columns: 100%;
+    padding: 10px 15px;
+  }
+  .contactGrid h1 {
+    font-size: 7vw;
+    letter-spacing: 0.1em;
+  }
+  .contactGrid h3 {
+    font-size: 4vw;
+    letter-spacing: 0em;
+  }
+  .MessageToUser {
+    font-size: 3vw;
+  }
+}
+/* ***** MOBILE ***** */
+@media (max-width: 600px) {
+  .EmailLog {
+    margin-right: 10px;
+    transform: translateY(25%) scale(0.9);
+  }
+}
+
+@media (max-width: 300px) {
+  .EmailLog {
+    display: none;
+  }
+}

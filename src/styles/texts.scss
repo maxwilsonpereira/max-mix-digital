@@ -1,0 +1,187 @@
+@mixin textH1Messages() {
+  text-align: center;
+  color: rgb(255, 255, 255);
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: GothamHTF;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+
+  /* ***** BIG SCREEN ***** */
+  @media (min-width: 1000px) {
+    font-size: 2.5rem;
+  }
+  @media (min-width: 1400px) {
+    font-size: 3rem;
+  }
+  /* ***** MOBILE ***** */
+  @media (max-width: 700px) {
+    padding: 10px;
+    // font-size: 1.5rem;
+    font-size: 6vw;
+  }
+}
+@mixin textH1MessagesBigger() {
+  text-align: center;
+  color: rgb(255, 255, 255);
+  font-size: 4rem;
+  font-weight: bold;
+  font-family: GothamHTF;
+  text-shadow: 3px 3px 2px rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+
+  /* ***** BIG SCREEN ***** */
+  @media (min-width: 1000px) {
+    font-size: 4.5rem;
+  }
+  @media (min-width: 1400px) {
+    font-size: 5rem;
+  }
+  /* ***** MOBILE ***** */
+  @media (max-width: 700px) {
+    padding: 10px;
+    font-size: 7vw;
+  }
+}
+@mixin mainTitle() {
+  position: absolute;
+  cursor: pointer;
+  color: white;
+  // bottom: 90px;
+  top: 78%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  // display: block;
+  // z-index: 999;
+  // pointer-events: none;
+  text-align: center;
+  /* color: rgb(100, 100, 100); */
+  // text-shadow: 1px 0px 1px rgba(0, 0, 0, 0.7);
+  // font-family: LibreBaskerville-Regular !important;
+  font-family: GothamHTF !important;
+  text-shadow: 3px 3px 2px rgba(0, 0, 0, 0.7);
+  // text-transform: uppercase !important;
+  font-size: 5.2vw;
+  // letter-spacing: 0.05em;
+  word-spacing: 0em;
+  line-height: 40px;
+  text-transform: none;
+  font-weight: bolder;
+  @media (min-width: 1200px) {
+    font-size: 60px;
+    // line-height: 40px;
+  }
+  /* ***** MOBILE ***** */
+  @media (max-width: 700px) {
+    top: 70%;
+    font-size: 7vw;
+    line-height: 35px;
+  }
+}
+@mixin mainTitleDescription() {
+  font-size: 3vw;
+  font-weight: normal;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
+  @media (min-width: 1200px) {
+    font-size: 35px;
+  }
+  /* ***** MOBILE ***** */
+  @media (max-width: 700px) {
+    font-size: 5vw;
+  }
+}
+
+// @media (min-width: 1800px) {
+//   figure h1 {
+//     font-size: 70px;
+//     line-height: 50px;
+//   }
+//   .descriptions {
+//     font-size: 40px;
+//   }
+// }
+
+// TEXT ANIMATIONS:
+@mixin textComeUpRightToLeft() {
+  animation: $speedTextAnimation ease-in-out;
+  animation-name: textComeUpRightToLeft;
+  // animation-fill-mode: backwards;
+}
+@keyframes textComeUpRightToLeft {
+  0% {
+    transform: translate(-10%, 900%) scale(0.2);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+@mixin textComeUpRightToLeftHidded() {
+  animation: $speedTextAnimation ease-in-out;
+  animation-name: textComeUpRightToLeft;
+  // animation-fill-mode: backwards;
+}
+@keyframes textComeUpRightToLeft {
+  0% {
+    opacity: 0;
+    transform: translate(-10%, 900%) scale(0.2);
+  }
+  30% {
+    opacity: 0;
+    transform: translate(-10%, 900%) scale(0.2);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+@mixin textComeUpLeftToRight() {
+  animation: $speedTextAnimation ease-in-out;
+  animation-name: textComeUpLeftToRight;
+  // animation-fill-mode: backwards;
+}
+@keyframes textComeUpLeftToRight {
+  0% {
+    transform: translate(-30%, 900%) scale(0.2);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+@mixin textComeUpRightToLeft2() {
+  animation: $speedTextAnimation ease-in-out;
+  animation-name: textComeUpRightToLeft2;
+  // animation-fill-mode: backwards;
+}
+@keyframes textComeUpRightToLeft2 {
+  0% {
+    transform: translate(-60%, 1900%) scale(0.2);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+@mixin textFadeIn() {
+  animation: 2s ease-in-out;
+  animation-name: fadeInText;
+}
+@keyframes fadeInText {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

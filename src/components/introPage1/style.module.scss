@@ -1,0 +1,140 @@
+// ANIMATIONS:
+@import "../../styles/texts.scss";
+// VARIABLES:
+@import "../../styles/variables.scss";
+
+.containerAbsolute {
+  position: absolute;
+  // height: 100vh;
+  // width: 100vw;
+  height: $heightGlobal;
+  width: $widthGlobal;
+  overflow: hidden;
+  z-index: 1;
+}
+.backgroundImage1,
+.backgroundImage4 {
+  background-image: url("../../assets/images/jpg/main1.jpg");
+  animation: 18s infinite ease-out;
+  animation-name: changeImg;
+}
+.backgroundImage2 {
+  background-image: url("../../assets/images/jpg/main2.jpg");
+}
+.backgroundImage3 {
+  background-image: url("../../assets/images/jpg/main3.jpg");
+}
+/* codes for the image slider */
+#slider {
+  overflow: hidden;
+}
+
+#slider figure {
+  position: relative;
+  width: 400%; /* 100% for each picture, 4 pictures = 300% */
+  margin: 0;
+  left: 0;
+  animation: 18s infinite ease-out;
+  animation-name: sliderAnimation;
+}
+@keyframes sliderAnimation {
+  0% {
+    left: 0;
+    // pointer-events: auto;
+  } /* you must divide 100% fot the amout of images you have */
+  30% {
+    left: 0%;
+  }
+  /* smaller these intermediate steps, faster will be the transition speed */
+  33% {
+    left: -100%;
+    pointer-events: auto;
+  } /* because my total width: 400% (4x 100% for 4 images) */
+  // Because the first and the last are the same, total are 3 images. +- 33% for each image
+  63% {
+    left: -100%;
+  }
+  66% {
+    pointer-events: auto;
+    left: -200%;
+  }
+  96% {
+    left: -200%;
+  }
+  // HERE IT CHANGES FOR THE FIRST AGAIN, and comes back to beggin on 0%:
+  // 99% {
+  //   left: -300%;
+  // }
+  100% {
+    pointer-events: none;
+    left: -300%;
+  }
+}
+#slider figure div {
+  width: 25%; /* 100 / 4 pictures = 25% */
+  height: 100vh;
+  float: left;
+  padding: 0;
+  margin: 0;
+
+  filter: brightness(99%);
+  /* NEXT FLOAT TO DON'T ALLOW MISTERIOUS MARGIN: */
+  // float: left;
+  // transition: 4s ease-in-out;
+}
+
+figure h1 {
+  @include mainTitle();
+}
+.descriptions {
+  @include mainTitleDescription();
+}
+// figure h1:hover {
+//   transition: 0.3s ease;
+//   transform: translate(-50%, -50%) scale(1.1);
+//   opacity: 0.6;
+// }
+.backgroundImage1,
+.backgroundImage2,
+.backgroundImage3,
+.backgroundImage4 {
+  position: relative;
+  height: $heightGlobal;
+  width: $widthGlobal;
+  text-align: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: 6s ease-out;
+}
+.resizeAnimationStopper {
+  animation: none !important;
+  transition: none !important;
+}
+
+// BEFORE: You are creating a "new element" before
+// the referred one, here: .backgroundImage1, 2 and 3.
+// You are inheriting the backgroung and after, you are
+// making zoom only this "new element"'s background:
+.backgroundImage1::before,
+.backgroundImage2::before,
+.backgroundImage3::before,
+.backgroundImage4::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: inherit;
+  transition: inherit;
+}
+.imgZoomIn::before {
+  transform: scale(1.2);
+}
+.imgZoomIn h1 {
+  cursor: default;
+  transition: 0.2s linear;
+  transform: translate(-50%, -50%) scale(1.01);
+  opacity: 0.9;
+}

@@ -1,0 +1,285 @@
+// To import Sass files, you first need to install node-sass:
+// npm i sass
+
+$speedPageMovement: 0.5s;
+// X2 is used on ZoomImages:
+$speedPageMovementX2: 1s;
+$speedTextAnimation: 0.5s;
+$speedTextAnimation: 0.8s;
+$typeMovement: ease-in-out;
+
+// LEFT GRID ANIMATIONS:
+@mixin leftGoesInFromLeft() {
+  animation: $speedPageMovement $typeMovement;
+  /* animation-fill-mode: backwards; */
+  animation-name: leftGoesInFromLeft;
+}
+@keyframes leftGoesInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+@mixin leftGoesOutLeft() {
+  transform: translateX(-100%);
+  animation: $speedPageMovement $typeMovement;
+  //   /* animation-fill-mode: backwards; */
+  animation-name: leftGoesOutLeft;
+}
+@keyframes leftGoesOutLeft {
+  0% {
+    transform: translateX(0%);
+  }
+  20% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+@mixin leftGoesInFromOutRight() {
+  animation: $speedPageMovement $typeMovement;
+  /* animation-fill-mode: backwards; */
+  animation-name: leftGoesInFromOutRight;
+}
+@keyframes leftGoesInFromOutRight {
+  0% {
+    transform: translateX(200%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+@mixin leftGoesOutRight() {
+  transform: translateX(-100%);
+  animation: $speedPageMovement $typeMovement;
+  //   /* animation-fill-mode: backwards; */
+  animation-name: leftGoesOutRight;
+}
+@keyframes leftGoesOutRight {
+  0% {
+    transform: translateX(0%);
+  }
+  20% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+@mixin rightDownBackFromPage4() {
+  transform: translateX(-100%);
+  animation: $speedPageMovement $typeMovement;
+  //   /* animation-fill-mode: backwards; */
+  animation-name: rightDownBackFromPage4;
+}
+@keyframes rightDownBackFromPage4 {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+// RIGHT GRID ANIMATIONS:
+@mixin rightGoesOutRight() {
+  animation: $speedPageMovement $typeMovement;
+  transform: translateX(100%);
+  animation-fill-mode: backwards;
+  animation-name: rightGoesOutRight;
+}
+@keyframes rightGoesOutRight {
+  0% {
+    transform: translateX(0%);
+  }
+  20% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+@mixin rightWasLeftBackToRight() {
+  animation: $speedPageMovement $typeMovement;
+  transform: translateX(100%);
+  // animation-fill-mode: backwards;
+  animation-name: rightGoesOutRight;
+}
+@keyframes rightGoesOutRight {
+  0% {
+    transform: translateX(0%);
+  }
+  30% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+@mixin rightGoesInFromRight() {
+  animation: $speedPageMovement $typeMovement;
+  animation-name: rightGoesInFromRight;
+  /* animation-fill-mode: backwards; */
+}
+@keyframes rightGoesInFromRight {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+// UP and DOWN:
+@mixin upToDown() {
+  transform: translateY(0%);
+  animation: $speedPageMovement $typeMovement;
+  //   /* animation-fill-mode: backwards; */
+  animation-name: upToDown;
+}
+@keyframes upToDown {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+@mixin downToUp() {
+  transform: translateY(0%);
+  animation: $speedPageMovement $typeMovement;
+  //   animation-fill-mode: backwards;
+  animation-name: downToUp;
+}
+@keyframes downToUp {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+@mixin downToUpBackwards() {
+  transform: translateY(0%);
+  animation: $speedPageMovement $typeMovement;
+  animation-fill-mode: backwards;
+  // animation-fill-mode: forwards;
+  animation-name: downToUpBackwards;
+}
+@keyframes downToUpBackwards {
+  0% {
+    transform: translateY(100%);
+  }
+  1% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+@mixin upExit() {
+  transform: translateY(-100%);
+  animation: $speedPageMovement $typeMovement;
+  // animation-fill-mode: backwards;
+  animation-name: upExit;
+}
+@keyframes upExit {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+@mixin downExit() {
+  transform: translateY(100%);
+  animation: $speedPageMovement $typeMovement;
+  // animation-fill-mode: backwards;
+  animation-name: downExit;
+}
+@keyframes downExit {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+// STAY OUTSIDE ANIMATIONS:
+@mixin stayOutsideLeft() {
+  transform: translateX(-102%);
+  animation: 0s;
+  //   /* animation-fill-mode: backwards; */
+  animation-name: stayOutsideLeft;
+}
+@keyframes stayOutsideLeft {
+  0% {
+    transform: translateX(-102%);
+  }
+  100% {
+    transform: translateX(-102%);
+  }
+}
+@mixin stayOutsideRight() {
+  transform: translateX(102%);
+  animation: 0s;
+  //   /* animation-fill-mode: backwards; */
+  animation-name: stayOutsideRight;
+}
+@keyframes stayOutsideRight {
+  0% {
+    transform: translateX(102%);
+  }
+  100% {
+    transform: translateX(102%);
+  }
+}
+
+@mixin stayOutUp() {
+  transform: translateY(-102%);
+  animation: 0s;
+  // animation-fill-mode: backwards;
+  animation-name: stayOutUp;
+}
+@keyframes stayOutUp {
+  0% {
+    transform: translateY(-102%);
+  }
+  100% {
+    transform: translateY(-102%);
+  }
+}
+@mixin stayOutDown() {
+  transform: translateY(102%);
+  animation: 0s;
+  // animation-fill-mode: backwards;
+  animation-name: stayOutDown;
+}
+@keyframes stayOutDown {
+  0% {
+    transform: translateY(102%);
+  }
+  100% {
+    transform: translateY(102%);
+  }
+}
+
+// NO MOVEMENT:
+@mixin translateXStays0() {
+  animation: 0s;
+  /* animation-fill-mode: backwards; */
+  animation-name: translateXStays0;
+}
+@keyframes translateXStays0 {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}

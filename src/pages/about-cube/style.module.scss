@@ -1,0 +1,76 @@
+.about {
+  // background-color: #5a81f9;
+  background-image: url("../../assets/images/cubeAbout/about.jpg");
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.showAbout {
+  animation: showAbout 4s ease-in-out;
+  animation-fill-mode: both;
+  height: 100vh;
+  // animation-iteration-count: 1;
+}
+@keyframes showAbout {
+  0% {
+    clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%);
+  }
+  50% {
+    filter: brightness(100%);
+    clip-path: polygon(0% 20%, 100% 20%, 100% 80%, 0% 80%);
+  }
+  99% {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+  100% {
+    filter: brightness(30%);
+  }
+}
+.fadeInLogo {
+  animation: 4s ease-in-out;
+  animation-name: fadeInLogo;
+}
+@keyframes fadeInLogo {
+  0% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.reverseAbout {
+  animation: reverseAbout 4s ease-in-out;
+  animation-fill-mode: both;
+  // animation-iteration-count: 1;
+}
+@keyframes reverseAbout {
+  0% {
+    transform: translateY(-37%);
+    /* height: 2000vh; */
+    height: 100vh;
+    margin-bottom: 0vh;
+    margin-top: 0vh;
+    text-decoration: underline;
+    text-shadow: 4px 4px #000000;
+    filter: brightness(30%);
+  }
+  50% {
+    text-decoration: none;
+  }
+  99% {
+    height: 25vh;
+    margin-bottom: 6vh;
+    margin-top: 6vh;
+  }
+  100% {
+    transform: translateY(0%);
+    height: 25vh;
+    margin-bottom: 6vh;
+    margin-top: 6vh;
+    filter: brightness(70%);
+  }
+}

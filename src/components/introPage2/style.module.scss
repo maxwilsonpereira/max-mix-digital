@@ -1,0 +1,169 @@
+// IMAGES ARE HERE:
+@import "../../assets/images/homePage/introPage2.scss";
+// ANIMATIONS:
+@import "../../styles/animations.scss";
+@import "../../styles/texts.scss";
+@import "../../styles/zoomImages.scss";
+// VARIABLES:
+@import "../../styles/variables.scss";
+
+.grid {
+  position: absolute;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 2;
+  height: $heightGlobal;
+  width: $widthGlobal;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "leftFull rightUp"
+    "leftFull rightDown";
+}
+.gridLeft {
+  grid-area: leftFull;
+  // IMAGE AT @import "../../assets/images/homePage/introPage2.scss";
+  // background-image: url("../../assets/images/homePage/woodBack.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  background-color: rgb(0, 0, 0);
+  // height: 100vh;
+  // width: 100vw;
+}
+.imgsContainer {
+  position: absolute;
+  // width: 100%;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+  align-content: center;
+  // animation: 1s ease-in-out;
+  // animation-name: fadeInImage;
+}
+// @keyframes fadeInImage {
+//   0% {
+//     opacity: 0;
+//   }
+//   40% {
+//     opacity: 0;
+//   }
+//   100% {
+//     opacity: 1;
+//   }
+// }
+.pngImages {
+  max-width: 350px;
+  animation: 4s infinite ease-in-out;
+  animation-name: moveImage;
+}
+// ***** MOBILE:
+@media (max-width: 900px) {
+  .imgsContainer {
+    left: 45%;
+  }
+  .pngImages {
+    max-width: 120%;
+  }
+}
+@keyframes moveImage {
+  0% {
+    transform: rotate(-2deg) translateY(-8%);
+  }
+  50% {
+    transform: rotate(3deg) translateY(0%);
+  }
+  100% {
+    transform: rotate(-2deg) translateY(-8%);
+  }
+}
+.gridRightUp {
+  grid-area: rightUp;
+  position: relative;
+  background-color: rgb(22, 60, 90);
+  // background-color: rgb(190, 178, 0);
+}
+.gridRightUp h1 {
+  @include textH1Messages();
+}
+.gridRightDown {
+  grid-area: rightDown;
+  position: relative;
+  background-color: rgb(0, 0, 0);
+  text-align: center;
+  overflow: hidden;
+}
+.backImage {
+  height: 100%;
+  // IMAGE AT @import "../../assets/images/homePage/introPage2.scss";
+  // background-image: url("../../assets/images/homePage/dreamsReality.jpg");
+  background-color: rgb(18, 18, 18);
+  background-position: 45%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+// ANIMATIONS:
+// COMPONENT LOADING:
+.stayOutside .gridLeft {
+  @include stayOutsideLeft();
+}
+.stayOutside .gridRightUp {
+  @include stayOutsideRight();
+}
+.stayOutside .gridRightDown {
+  @include stayOutsideRight();
+}
+// ENTER AND OUT:
+.zoomInImage {
+  @include zoomInImage();
+}
+.zoomOutImage {
+  @include zoomOutImage();
+}
+.enterSecondPage .gridLeft {
+  @include leftGoesInFromLeft();
+}
+.enterSecondPage .gridRightDown {
+  @include rightGoesInFromRight();
+}
+.enterSecondPage .gridRightUp {
+  @include rightGoesInFromRight();
+}
+.enterSecondPage .gridRightUp h1 {
+  @include textComeUpRightToLeft();
+}
+.backToFirst .gridLeft {
+  @include leftGoesOutLeft();
+  animation-fill-mode: backwards;
+}
+.backToFirst .gridRightUp {
+  @include rightGoesOutRight();
+}
+.backToFirst .gridRightDown {
+  @include rightGoesOutRight();
+}
+.exitToThirdPage .gridLeft {
+  @include leftGoesOutLeft();
+}
+.exitToThirdPage .gridRightUp {
+  @include leftGoesOutLeft();
+}
+.reverseToSecond .gridLeft {
+  @include leftGoesInFromLeft();
+}
+.reverseToSecond .gridRightUp {
+  @include leftGoesInFromLeft();
+}
+.reverseToSecond h1 {
+  @include textComeUpLeftToRight();
+}
+.exitToPage4 .gridRightDown {
+  @include leftGoesOutLeft();
+}
+.comeBackFromPage4 .gridRightDown {
+  @include leftGoesInFromLeft();
+}

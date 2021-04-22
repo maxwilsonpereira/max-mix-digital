@@ -1,0 +1,177 @@
+.containerBars {
+  z-index: 100;
+  position: absolute;
+  right: 20px;
+  top: 30px;
+  width: 38px;
+  height: 25px;
+  /* background-color: darkred; */
+  cursor: pointer;
+}
+.disableClick {
+  pointer-events: none;
+  cursor: default;
+}
+.enterBar {
+  position: absolute;
+  width: 38px;
+  height: 3.5px;
+  background-color: rgb(255, 255, 255);
+  transition: 0.2s ease-in-out;
+}
+.enterBar1 {
+  top: 0px;
+}
+.enterBar2 {
+  top: 10px;
+}
+.enterBar3 {
+  top: 20px;
+}
+.containerBars:hover .enterBar1 {
+  animation: enterBarsMovement 0.3s ease-in-out;
+}
+@keyframes enterBarsMovement {
+  0% {
+    width: 38px;
+  }
+  50% {
+    width: 28px;
+  }
+  100% {
+    width: 38px;
+  }
+}
+.containerBars:hover .enterBar2 {
+  animation: enterBarsMovement 0.4s ease-in-out;
+}
+@keyframes enterBarsMovement {
+  0% {
+    width: 38px;
+  }
+  50% {
+    width: 28px;
+  }
+  100% {
+    width: 38px;
+  }
+}
+.containerBars:hover .enterBar3 {
+  animation: enterBarsMovement 0.5s ease-in-out;
+}
+@keyframes enterBarsMovement {
+  0% {
+    width: 38px;
+  }
+  50% {
+    width: 28px;
+  }
+  100% {
+    width: 38px;
+  }
+}
+.shakeMenu {
+  /* background-color: rgb(17, 64, 100); */
+  animation: 1s infinite ease-in-out;
+  animation-name: shakeMenu;
+  transition: 0.2s ease-in-out;
+}
+@keyframes shakeMenu {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+/* CLOSE ICONE: */
+.closeBar {
+  position: absolute;
+  width: 0px;
+  height: 3.5px;
+  background-color: rgb(255, 255, 255);
+  animation: closeBars 0.2s ease-in-out;
+}
+.closeBar1 {
+  top: 0px;
+}
+.closeBar3 {
+  top: 20px;
+}
+@keyframes closeBars {
+  0% {
+    width: 38px;
+  }
+  100% {
+    width: 0px;
+  }
+}
+.makeTheXsBars {
+  top: 10px;
+}
+.makeTheX {
+  position: absolute;
+  width: 38px;
+  height: 3.5px;
+  transform: rotate(45deg);
+  background-color: rgb(255, 255, 255);
+  animation: makeTheXs 0.9s ease-in-out;
+}
+@keyframes makeTheXs {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(45deg);
+  }
+}
+.makeTheX::after {
+  position: absolute;
+  content: "";
+  width: 38px;
+  height: 3.5px;
+  transform: rotate(-90deg);
+  background-color: rgb(255, 255, 255);
+  animation: makeTheXsAfter 0.9s ease-in-out;
+}
+@keyframes makeTheXsAfter {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-90deg);
+  }
+}
+.bounceX:hover {
+  animation: bounceX 0.2s ease-in-out;
+}
+@keyframes bounceX {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.7);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* ***** MOBILE ***** */
+@media (max-width: 700px) {
+  /* .enterBar {
+    transform: scaleX(0.7) scaleY(0.9);
+  } */
+  .containerBars {
+    top: 20px;
+  }
+}

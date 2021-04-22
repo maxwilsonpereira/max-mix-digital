@@ -1,0 +1,507 @@
+// IMAGES ARE HERE:
+@import "../../assets/images/projects/images.scss";
+// ANIMATIONS:
+@import "../../styles/animations.scss";
+// VARIABLES
+@import "../../styles/variables.scss";
+
+.containerProjects {
+  position: absolute;
+  height: $heightGlobal;
+  width: $widthGlobal;
+  // height: 100vh;
+  // width: 100vw;
+  overflow: hidden;
+}
+// GRID COMPLETE GUIDE:
+// https://css-tricks.com/snippets/css/complete-guide-grid/
+.grid {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+}
+@media (max-width: 1000px) {
+  .grid {
+    height: 200%;
+    grid-template-columns: 50% 50%;
+  }
+}
+.imgBox {
+  position: relative;
+  background-position: center;
+  overflow: hidden;
+}
+
+.titlesH3,
+.descriptionH3 {
+  position: absolute;
+  pointer-events: none;
+  // width: 25vw; when grid-template-columns: 25% 25% 25% 25%;
+  width: 25vw;
+  padding: 0 15px;
+  // background: #ccc;
+  font-family: GothamHTF;
+  color: rgb(85, 85, 85);
+}
+.titlesH3 {
+  font-size: 1.5rem;
+  top: 320px;
+  font-weight: 700;
+}
+.descriptionH3 {
+  font-size: 1.1rem;
+  top: 350px;
+  font-weight: 100;
+}
+@media (max-width: 1000px) {
+  .titlesH3 {
+    // width: 50vw; when grid-template-columns: 50% 50%;
+    width: 50vw;
+  }
+  .descriptionH3 {
+    // width: 50vw; when grid-template-columns: 50% 50%;
+    width: 50vw;
+  }
+}
+// MOBILE WIDTH:
+@media (max-width: 700px) {
+  .titlesH3 {
+    font-size: 4vw;
+  }
+  .descriptionH3 {
+    font-size: 3vw;
+  }
+}
+// HEIGHT MEDIAS:
+@media (max-height: 860px) {
+  .titlesH3 {
+    top: 250px;
+  }
+  .descriptionH3 {
+    top: 280px;
+  }
+}
+@media (max-height: 720px) {
+  .titlesH3 {
+    top: 200px;
+  }
+  .descriptionH3 {
+    top: 230px;
+  }
+}
+@media (max-height: 500px) {
+  .titlesH3 {
+    display: none;
+  }
+}
+.fadeInMenuAndArrows {
+  animation: 3.5s;
+  // animation-fill-mode: backwards;
+  animation-name: fadeInMenuAndArrows;
+}
+@keyframes fadeInMenuAndArrows {
+  0% {
+    display: none;
+    pointer-events: none;
+    opacity: 0;
+  }
+  60% {
+    display: none;
+    pointer-events: none;
+    opacity: 0;
+  }
+  61% {
+    display: inline;
+    pointer-events: none;
+    opacity: 0;
+  }
+  100% {
+    pointer-events: auto;
+    opacity: 1;
+  }
+}
+
+.images {
+  //   width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  // transition: 1s ease-in-out;
+  @include downToUpBackwards();
+}
+.onHover {
+  width: 100%;
+  height: 100%;
+  transition: 1s ease-in-out;
+}
+.onHover:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  // transition: 1s ease-in-out;
+}
+.showBackground {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  // display: none;
+  transition: 1s ease-in-out;
+}
+.onHover:hover .showBackground {
+  // DEVELOPING:
+  // .onHover .showBackground {
+  display: inline;
+  background-color: white;
+  opacity: 0.7;
+  animation: 0.3s linear;
+  animation-name: fadeInWhite;
+  // transition: 1s ease-in-out;
+}
+@keyframes fadeInWhite {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.7;
+  }
+}
+.fadeInArrows {
+  animation: 3s linear;
+  animation-name: fadeInArrows;
+  // transition: 1s ease-in-out;
+}
+@keyframes fadeInArrows {
+  0% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.dontShowContent {
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+  transition: 1s ease-in-out;
+}
+.showContent {
+  z-index: 1;
+  position: absolute;
+  color: white;
+  animation: 1s linear;
+  animation-name: fadeInWhite;
+}
+@keyframes fadeInWhite {
+  0% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+.arrowDirection {
+  // opacity: 1;
+  animation: 3s ease-in-out;
+  animation-direction: backwards;
+  animation-name: fadeInArrow;
+}
+@keyframes fadeInArrow {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.imbBoxSecondPage {
+  transform: translateY(-100%);
+  position: relative;
+  background-position: center;
+  animation: $speedPageMovement $typeMovement;
+  animation-fill-mode: backwards;
+  // animation-fill-mode: forwards;
+  overflow: hidden;
+  animation-name: imbBoxSecondPage;
+}
+@keyframes imbBoxSecondPage {
+  0% {
+    pointer-events: none;
+    transform: translateY(0%);
+  }
+  1% {
+    transform: translateY(0%);
+  }
+  99% {
+    pointer-events: none;
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.imbBoxThirdPage {
+  transform: translateY(-200%);
+  position: relative;
+  background-position: center;
+  animation: $speedPageMovement $typeMovement;
+  animation-fill-mode: backwards;
+  // animation-fill-mode: forwards;
+  overflow: hidden;
+  animation-name: imbBoxThirdPage;
+}
+@keyframes imbBoxThirdPage {
+  0% {
+    pointer-events: none;
+    transform: translateY(-100%);
+  }
+  1% {
+    transform: translateY(-100%);
+  }
+  99% {
+    pointer-events: none;
+  }
+  100% {
+    transform: translateY(-200%);
+  }
+}
+.imbBoxBackToSecondPage {
+  transform: translateY(-100%);
+  position: relative;
+  background-position: center;
+  animation: $speedPageMovement $typeMovement;
+  animation-fill-mode: backwards;
+  // animation-fill-mode: forwards;
+  overflow: hidden;
+  animation-name: imbBoxBackToSecondPage;
+}
+@keyframes imbBoxBackToSecondPage {
+  0% {
+    pointer-events: none;
+    transform: translateY(-200%);
+  }
+  1% {
+    transform: translateY(-200%);
+  }
+  99% {
+    pointer-events: none;
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+.imbBoxBackToFirstPage {
+  transform: translateY(0%);
+  position: relative;
+  background-position: center;
+  animation: $speedPageMovement $typeMovement;
+  animation-fill-mode: backwards;
+  // animation-fill-mode: forwards;
+  overflow: hidden;
+  animation-name: imbBoxBackToFirstPage;
+}
+@keyframes imbBoxBackToFirstPage {
+  0% {
+    pointer-events: none;
+    transform: translateY(-100%);
+  }
+  1% {
+    transform: translateY(-100%);
+  }
+  99% {
+    pointer-events: none;
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+/* ANIMATION STOPER: */
+.resizeAnimationStopper {
+  animation: none !important;
+  transition: none !important;
+}
+.imbBoxBackToSecondPageNoAnimation {
+  transform: translateY(-100%);
+  position: relative;
+  background-position: center;
+  overflow: hidden;
+}
+.imbBoxThirdPageNoAnimation {
+  transform: translateY(-200%);
+  position: relative;
+  background-position: center;
+  overflow: hidden;
+}
+.imbBoxSecondPageNoAnimation {
+  transform: translateY(-100%);
+  position: relative;
+  background-position: center;
+  overflow: hidden;
+}
+@media (min-width: 1000px) {
+  // .imgBox,
+  .imbBoxBackToSecondPageNoAnimation,
+  .imbBoxThirdPageNoAnimation,
+  .imbBoxSecondPageNoAnimation,
+  .imbBoxSecondPage,
+  .imbBoxThirdPage,
+  .imbBoxBackToSecondPage,
+  .imbBoxBackToFirstPage {
+    transform: translateY(0%);
+    animation-name: doNothing;
+    transition: none !important;
+    position: relative;
+    background-position: center;
+    overflow: hidden;
+  }
+}
+
+// MOBILE - SHOW TITLE AND DESCRIPTION ALWAYS:
+@media (max-width: 700px) {
+  .titlesH3,
+  .descriptionH3 {
+    color: rgb(230, 230, 230);
+  }
+  .onHover .showBackground {
+    display: none;
+  }
+  .dontShowContent,
+  .showContent {
+    z-index: 1;
+    position: absolute;
+    color: white;
+    opacity: 0.8;
+    animation: 1s linear;
+    animation-name: fadeInTextMobile;
+  }
+  @keyframes fadeInTextMobile {
+    0% {
+      opacity: 0;
+    }
+    60% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0.7;
+    }
+  }
+  // .onHover {
+  //   animation: none !important;
+  //   transition: none !important;
+  // }
+  .onHover:hover {
+    cursor: pointer;
+    transform: scale(1);
+    animation: none !important;
+    transition: none !important;
+    // transition: 1s ease-in-out;
+  }
+  .onHover:hover .showBackground {
+    animation: none !important;
+    transition: none !important;
+    display: inline;
+    background-color: white;
+    opacity: 0;
+  }
+}
+.image1 {
+  // @include downToUpBackwards();
+  animation-delay: 0s;
+}
+.image2 {
+  // @include downToUpBackwards();
+  animation-delay: 0.05s;
+}
+.image3 {
+  // @include downToUpBackwards();
+  animation-delay: 0.1s;
+}
+.image4 {
+  // @include downToUpBackwards();
+  animation-delay: 0.15s;
+}
+.image5 {
+  // @include downToUpBackwards();
+  animation-delay: 0.25s;
+}
+.image6 {
+  // @include downToUpBackwards();
+  animation-delay: 0.3s;
+}
+.image7 {
+  // @include downToUpBackwards();
+  animation-delay: 0.35s;
+}
+.image8 {
+  // @include downToUpBackwards();
+  animation-delay: 0.4s;
+}
+.imgBoxElementDown1 {
+  // @include downToUpBackwards();
+  animation-delay: 0s;
+}
+.imgBoxElementDown2 {
+  // @include downToUpBackwards();
+  animation-delay: 0.05s;
+}
+.imgBoxElementDown3 {
+  // @include downToUpBackwards();
+  animation-delay: 0.1s;
+}
+.imgBoxElementDown4 {
+  // @include downToUpBackwards();
+  animation-delay: 0.15s;
+}
+.imgBoxElementDown5 {
+  // @include downToUpBackwards();
+  animation-delay: 0.25s;
+}
+.imgBoxElementDown6 {
+  // @include downToUpBackwards();
+  animation-delay: 0.3s;
+}
+.imgBoxElementDown7 {
+  // @include downToUpBackwards();
+  animation-delay: 0.35s;
+}
+.imgBoxElementDown8 {
+  // @include downToUpBackwards();
+  animation-delay: 0.4s;
+}
+.imgBoxElementUp8 {
+  // @include downToUpBackwards();
+  animation-delay: 0s;
+}
+.imgBoxElementUp7 {
+  // @include downToUpBackwards();
+  animation-delay: 0.05s;
+}
+.imgBoxElementUp6 {
+  // @include downToUpBackwards();
+  animation-delay: 0.1s;
+}
+.imgBoxElementUp5 {
+  // @include downToUpBackwards();
+  animation-delay: 0.15s;
+}
+.imgBoxElementUp4 {
+  // @include downToUpBackwards();
+  animation-delay: 0.25s;
+}
+.imgBoxElementUp3 {
+  // @include downToUpBackwards();
+  animation-delay: 0.3s;
+}
+.imgBoxElementUp2 {
+  // @include downToUpBackwards();
+  animation-delay: 0.35s;
+}
+.imgBoxElementUp1 {
+  // @include downToUpBackwards();
+  animation-delay: 0.4s;
+}

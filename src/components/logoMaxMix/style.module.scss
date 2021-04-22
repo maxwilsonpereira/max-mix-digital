@@ -1,0 +1,45 @@
+.maxMixLogo {
+  position: absolute;
+  overflow: hidden;
+  z-index: 50;
+  width: 80px;
+  margin: 30px 40px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+.maxMixLogo:hover {
+  transform: scale(1.03);
+}
+.hoverNotActive {
+  pointer-events: none;
+  //   animation: none !important;
+  //   transition: none !important;
+}
+/* ***** MOBILE ***** */
+@media (max-width: 700px) {
+  .maxMixLogo {
+    width: 55px;
+    margin: 20px;
+  }
+}
+
+// .fadeInComponent {
+//   animation-duration: 4s;
+//   animation-name: fadeInComponent;
+// }
+// @keyframes fadeInComponent {
+//   0% {
+//     pointer-events: none;
+//     opacity: 0;
+//   }
+//   40% {
+//     opacity: 0;
+//   }
+//   99% {
+//     pointer-events: none;
+//   }
+//   100% {
+//     opacity: 1;
+//     pointer-events: auto;
+//   }
+// }

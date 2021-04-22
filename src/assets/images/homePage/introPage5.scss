@@ -1,0 +1,17 @@
+.image1 {
+  background-image: url("./wordwide.jpg");
+  filter: grayscale(50%) brightness(80%);
+}
+.image2 {
+  filter: grayscale(40%) brightness(80%);
+  background-image: url("./doIt.jpg");
+}
+.imageDown1 {
+  filter: grayscale(0%) brightness(80%);
+  background-image: url("./opportunities2.jpg");
+}
+.imageDown2 {
+  // HAPPY FROG AWARDS:
+  filter: grayscale(0%) brightness(80%);
+  background-image: url("./opportunities3.jpg");
+}

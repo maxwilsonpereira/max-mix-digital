@@ -1,25 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense } from "react";
+
+// npm i react-router-dom
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+
+import { MenuIsOnProvider } from "./context/menu";
+
+import "./localStorage";
+
+// import IntroPage from "./pages/intro";
+// import ProjectsPage from "./pages/projects";
+
+// LAZY LOADING NEXT PAGES:
+// It will render the component ONLY WHEN / IF needed!
+// React { Suspense } is required to wrap all the Routes.
+const IntroPage = React.lazy(() => {
+  return import("./pages/intro");
+});
+const ProjectsPage = React.lazy(() => {
+  return import("./pages/projects");
+});
+const AboutPage = React.lazy(() => {
+  return import("./pages/about");
+});
+const AboutCubePage = React.lazy(() => {
+  return import("./pages/about-cube");
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MenuIsOnProvider>
+      <BrowserRouter>
+        <Suspense fallback={<></>}>
+          <Switch>
+            <Route path="/about-cube" component={AboutCubePage} />
+            <Route path="/about" component={AboutPage} />
+            <Route path="/projects" component={ProjectsPage} />
+            <Route path="/" component={IntroPage} />
+          </Switch>
+        </Suspense>
+      </BrowserRouter>
+    </MenuIsOnProvider>
   );
 }
 

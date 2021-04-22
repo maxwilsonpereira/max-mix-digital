@@ -1,0 +1,30 @@
+.showAuxiliarClass {
+  position: absolute;
+  z-index: 999;
+  margin: 200px;
+  font-size: 80px;
+  font-weight: 800;
+  color: rgb(158, 0, 0);
+  cursor: pointer;
+}
+.fadeInMenu {
+  animation: 3s;
+  /* animation-fill-mode: backwards; */
+  animation-name: fadeInMenu;
+}
+@keyframes fadeInMenu {
+  0% {
+    display: none;
+    pointer-events: none;
+    opacity: 0;
+  }
+  60% {
+    display: none;
+    pointer-events: none;
+    opacity: 0;
+  }
+  100% {
+    pointer-events: auto;
+    opacity: 1;
+  }
+}

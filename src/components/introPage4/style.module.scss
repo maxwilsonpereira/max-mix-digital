@@ -1,0 +1,117 @@
+@import "../../styles/animations.scss";
+@import "../../styles/texts.scss";
+// VARIABLES
+@import "../../styles/variables.scss";
+
+// .gridLeftDown:hover {
+//   transition: 0.6s ease-in-out;
+//   -webkit-transition: 0.6s ease-in-out;
+//   -moz-transition: 0.6s ease-in-out;
+//   -o-transition: 0.6s ease-in-out;
+//   filter: grayscale(0%) brightness(80%);
+//   background-image: url("../../assets/images/homePage/oportunities2.jpg");
+// }
+.image1 {
+  background-image: url("../../assets/images/homePage/opportunities1.jpg");
+  filter: grayscale(80%) brightness(80%);
+}
+// .image2 {
+//   filter: grayscale(0%) brightness(80%);
+//   background-image: url("../../assets/images/homePage/opportunities2.jpg");
+// }
+// .image3 {
+//   filter: grayscale(0%) brightness(80%);
+//   background-image: url("../../assets/images/homePage/opportunities3.jpg");
+// }
+.grid {
+  position: absolute;
+  z-index: 4;
+  pointer-events: none;
+  overflow: hidden;
+  height: $heightGlobal;
+  width: $widthGlobal;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "leftUp rightArea"
+    "leftDown rightArea";
+}
+.gridLeftDown {
+  grid-area: leftDown;
+  position: relative;
+  overflow: hidden;
+  background-color: rgb(0, 0, 0);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  // TRANSITIONS PROVOKE IMAGE TO BOUNCE OUT AND IN! DONT USE HERE:
+  // transition: 0.6s ease-in-out;
+  // -webkit-transition: 0.6s ease-in-out;
+  // -moz-transition: 0.6s ease-in-out;
+  // -o-transition: 0.6s ease-in-out;
+}
+.gridRight {
+  // z-index: 14;
+  grid-area: rightArea;
+  position: relative;
+  background-color: rgb(0, 0, 0);
+  overflow: hidden;
+  animation: $speedPageMovement $typeMovement;
+}
+.gridLeftUp {
+  // z-index: 14;
+  grid-area: leftUp;
+  position: relative;
+  background-color: rgb(0, 69, 78);
+  //   overflow: hidden;
+  animation: $speedPageMovement $typeMovement;
+}
+.video {
+  object-fit: cover;
+  height: $heightGlobal;
+  width: $widthGlobal;
+  // position: fixed;
+  top: 0;
+  left: 0;
+}
+.gridLeftUp h1 {
+  @include textH1Messages();
+}
+// ANIMATIONS ENTER PAGE 4:
+// COMPONENT LOADING:
+.stayOutside .gridRight {
+  @include stayOutsideRight();
+}
+.stayOutside .gridLeftUp {
+  @include stayOutsideLeft();
+}
+.stayOutside .gridLeftDown {
+  @include stayOutsideLeft();
+}
+// ENTER and EXIT:
+.enterPage4 .gridLeftUp {
+  @include leftGoesInFromOutRight();
+}
+.enterPage4 .gridLeftUp h1 {
+  @include textComeUpRightToLeft2();
+}
+.enterPage4 .gridLeftDown {
+  @include leftGoesInFromOutRight();
+}
+.enterPage4 .gridRight {
+  @include rightGoesInFromRight();
+}
+.noMovement .gridLeftUp h1 {
+  @include textComeUpRightToLeft2();
+}
+// ANIMATIONS EXIT PAGE 4:
+.exitPage4 .gridLeftUp {
+  @include leftGoesOutRight();
+}
+.exitPage4 .gridLeftDown {
+  @include leftGoesOutRight();
+}
+.exitPage4 .gridRight {
+  @include rightGoesOutRight();
+}

@@ -1,0 +1,141 @@
+// ANIMATIONS:
+@import "../../styles/animations.scss";
+@import "../../styles/texts.scss";
+@import "../../styles/imageAnimations.scss";
+// VARIABLES
+@import "../../styles/variables.scss";
+// IMAGES:
+@import "../../assets/images/homePage/introPage5.scss";
+// .image1 {
+//   background-image: url("../../assets/images/homePage/wordwide.jpg");
+//   filter: grayscale(50%) brightness(80%);
+// }
+// .image2 {
+//   filter: grayscale(40%) brightness(80%);
+//   background-image: url("../../assets/images/homePage/doIt.jpg");
+// }
+// .leftGridDown {
+//   // HAPPY FROG AWARDS:
+//   filter: grayscale(0%) brightness(80%);
+//   background-image: url("../../assets/images/homePage/opportunities2.jpg");
+// }
+// HAPPY FROG AWARDS:
+// .image3 {
+//   filter: grayscale(0%) brightness(80%);
+//   background-image: url("../../assets/images/homePage/opportunities2.jpg");
+// }
+.grid {
+  position: absolute;
+  z-index: 5;
+  pointer-events: none;
+  overflow: hidden;
+  height: $heightGlobal;
+  width: $widthGlobal;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "leftGridUp rightUp"
+    "leftGridDown rightDown";
+}
+// gridLeftCropper NEEDED to hide right part of entrance:
+.gridLeftCropper {
+  grid-area: leftGridUp;
+  display: none;
+  overflow: hidden;
+  transform: translateX(-100%);
+  pointer-events: none;
+  // background-color: lawngreen;
+}
+.leftGridDown {
+  grid-area: leftGridDown;
+  // z-index: 6;
+  position: relative;
+  // HAPPY FROG AWARDS:
+  // filter: grayscale(0%) brightness(80%);
+  // background-image: url("../../assets/images/homePage/opportunities2.jpg");
+  background-position: center;
+  // background-position: 60%;
+  // background-image: url("../../assets/images/homePage/wordwide.jpg");
+  background-color: rgb(0, 0, 0);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.gridRightUp {
+  grid-area: rightUp;
+  background-position: center;
+  background-position: 60%;
+  // background-image: url("../../assets/images/homePage/wordwide.jpg");
+  background-color: rgb(0, 0, 0);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.gridRightDown h1 {
+  @include textH1Messages();
+}
+.gridRightDown {
+  overflow: hidden;
+  grid-area: rightDown;
+  position: relative;
+  background-color: rgb(18, 18, 18);
+}
+// ANIMATIONS:
+// COMPONENT LOADING:
+.stayOutside .gridLeftCropper {
+  @include stayOutsideLeft();
+}
+.stayOutside .leftGridDown {
+  @include stayOutsideLeft();
+}
+.stayOutside .gridRightUp {
+  @include stayOutsideRight();
+}
+.stayOutside .gridRightDown {
+  @include stayOutsideRight();
+}
+// ENTER and EXIT:
+.enterPage5 .gridRightUp {
+  @include rightGoesInFromRight();
+}
+.enterPage5 .gridRightDown {
+  @include rightGoesInFromRight();
+}
+.enterPage5 .leftGridDown {
+  @include leftGoesInFromLeft();
+}
+.exitPage5 .gridRightUp {
+  @include rightGoesOutRight();
+}
+.exitPage5 .gridRightDown {
+  @include rightGoesOutRight();
+}
+.exitPage5 .leftGridDown {
+  @include leftGoesOutLeft();
+}
+.enterPage5 .gridRightDown h1 {
+  @include textComeUpRightToLeft();
+}
+.noMovement .gridRightDown h1 {
+  @include textComeUpRightToLeft();
+}
+// .enterThirdPage .gridRightDown h1 {
+//   @include textComeUpLeftToRight();
+// }
+// .enterThirdPage .gridLeft {
+//   @include rightGoesInFromRight();
+// }
+// .translateXStays0 .gridLeft {
+//   @include translateXStays0();
+// }
+// .translateXStays0 h1 {
+//   @include textComeUpLeftToRight();
+// }
+// .backToSecond .gridRightUp {
+//   @include rightGoesOutRight();
+// }
+// .backToSecond .gridLeft {
+//   @include rightGoesOutRight();
+// }
+// .exitToPage4 .gridRightUp {
+//   @include leftGoesOutLeft();
+// }

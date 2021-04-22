@@ -1,0 +1,204 @@
+.wrap {
+  /* margin-top: 40vh; */
+  /* perspective: 1000px; */
+  perspective-origin: 50% 50%;
+}
+.cube {
+  position: absolute;
+  z-index: 90;
+  top: 25%;
+  transform-style: preserve-3d;
+  /* NEXT is about the area the cube will rotate: */
+  width: 500px;
+  height: 500px;
+  animation: loopCube 40s linear infinite;
+}
+@keyframes loopCube {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg) translateY(0%);
+  }
+  25% {
+    transform: rotateX(5deg) rotateY(80deg) translateY(20%);
+  }
+  60% {
+    transform: rotateX(10deg) rotateY(210deg) translateY(0%);
+  }
+  75% {
+    transform: rotateX(150deg) rotateY(280deg) translateY(20%);
+  }
+  100% {
+    transform: rotateX(360deg) rotateY(360deg) translateY(0%);
+  }
+}
+.startHover:hover {
+  cursor: pointer;
+  animation-play-state: paused;
+  animation-fill-mode: forwards;
+}
+.imageNoPointer {
+  cursor: default;
+}
+.cube img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+.cube img {
+  position: absolute;
+  filter: grayscale(100%);
+  /* SIZE: translateZ must be half of width/height: */
+  width: 400px;
+  height: 400px;
+  opacity: 0.8;
+  transition: 0.5s ease-in-out;
+  animation-duration: 3s;
+  animation-name: fadeInCube;
+}
+@keyframes fadeInCube {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
+.cube img:nth-child(1) {
+  transform: rotateY(0deg) translateZ(200px);
+}
+.cube img:nth-child(2) {
+  transform: rotateY(90deg) translateZ(200px);
+}
+.cube img:nth-child(3) {
+  transform: rotateY(180deg) translateZ(200px);
+}
+
+.cube img:nth-child(4) {
+  transform: rotateX(-90deg) translateZ(200px);
+}
+.cube img:nth-child(5) {
+  transform: rotateX(90deg) translateZ(200px);
+}
+
+.cube img:nth-child(6) {
+  transform: rotateY(-90deg) translateZ(200px);
+}
+
+.closeCubeClass img {
+  animation-duration: 3s;
+  animation-name: fadeOutCube;
+}
+@keyframes fadeOutCube {
+  0% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0;
+  }
+  70% {
+    display: none;
+  }
+  /* HERE you must CLEAR the cube on the js code (options/index.js) */
+  100% {
+    display: none;
+    opacity: 0;
+  }
+}
+.BtnCube {
+  position: absolute;
+  z-index: 10;
+}
+/* MEDIAS FOR CENTERING THE CUBE: */
+@media (min-width: 1801px) {
+  .cube {
+    left: 40%;
+  }
+}
+@media (max-width: 1800px) {
+  .cube {
+    left: 35%;
+  }
+}
+@media (max-width: 1300px) {
+  .cube {
+    left: 30%;
+  }
+}
+@media (max-width: 700px) {
+  .cube {
+    left: 22%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .cube {
+    /* NEXT is about the area the cube will rotate: */
+    width: 300px;
+    height: 300px;
+  }
+  .cube img {
+    /* SIZE: translateZ must be half of width/height: */
+    width: 300px;
+    height: 300px;
+  }
+  .cube img:nth-child(1) {
+    transform: rotateY(0deg) translateZ(150px);
+  }
+  .cube img:nth-child(2) {
+    transform: rotateY(90deg) translateZ(150px);
+  }
+  .cube img:nth-child(3) {
+    transform: rotateY(180deg) translateZ(150px);
+  }
+
+  .cube img:nth-child(4) {
+    transform: rotateX(-90deg) translateZ(150px);
+  }
+  .cube img:nth-child(5) {
+    transform: rotateX(90deg) translateZ(150px);
+  }
+
+  .cube img:nth-child(6) {
+    transform: rotateY(-90deg) translateZ(150px);
+  }
+}
+
+/* MOBILE: */
+@media (max-width: 700px) {
+  .cube {
+    /* NEXT is about the area the cube will rotate: */
+    width: 200px;
+    height: 200px;
+    /* left: 25%; */
+  }
+  .cube:hover {
+    cursor: pointer;
+    animation-play-state: running;
+  }
+  .cube img {
+    /* SIZE: translateZ must be half of width/height: */
+    width: 200px;
+    height: 200px;
+  }
+  .cube img:nth-child(1) {
+    transform: rotateY(0deg) translateZ(100px);
+  }
+  .cube img:nth-child(2) {
+    transform: rotateY(90deg) translateZ(100px);
+  }
+  .cube img:nth-child(3) {
+    transform: rotateY(180deg) translateZ(100px);
+  }
+
+  .cube img:nth-child(4) {
+    transform: rotateX(-90deg) translateZ(100px);
+  }
+  .cube img:nth-child(5) {
+    transform: rotateX(90deg) translateZ(100px);
+  }
+
+  .cube img:nth-child(6) {
+    transform: rotateY(-90deg) translateZ(100px);
+  }
+}

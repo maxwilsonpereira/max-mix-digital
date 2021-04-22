@@ -1,0 +1,222 @@
+$enterLine1Duration: 0.6s;
+
+.menuContainer {
+  position: absolute;
+  z-index: 15;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  color: white;
+}
+.content {
+  overflow: hidden;
+  width: 100%;
+  position: absolute;
+  top: 30%;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+}
+.currentPage {
+  color: rgb(87, 87, 87);
+  pointer-events: none;
+  font-style: italic;
+}
+.content h1 {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 3rem;
+  line-height: 7rem;
+  transition: 0.1s linear;
+}
+.content h1:hover {
+  transform: scale(1.1, 0.9); /* Equal to scaleX(1.1) scaleY(0.9) */
+  filter: brightness(50%);
+}
+.h1Second {
+  animation-fill-mode: backwards;
+  animation-delay: 0.3s;
+}
+.h1Third {
+  animation-fill-mode: backwards;
+  animation-delay: 0.5s;
+}
+.h1Forth {
+  animation-fill-mode: backwards;
+  animation-delay: 0.7s;
+}
+.fadeInMenu {
+  /* BLACK BACKGROUND: */
+  animation-duration: 1.5s;
+  animation-name: fadeIn;
+}
+@keyframes fadeIn {
+  0% {
+    // pointer-events: none;
+    opacity: 0;
+  }
+  99% {
+    // pointer-events: none;
+    opacity: 9;
+  }
+  100% {
+    pointer-events: auto;
+    opacity: 1;
+  }
+}
+.fadeOutMenu {
+  opacity: 0;
+  pointer-events: none;
+  animation-duration: 0.6s;
+  animation-name: fadeOutMenu;
+}
+@keyframes fadeOutMenu {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+.pointerEventTime {
+  // pointer-events: auto;
+  animation: 1.5s;
+  animation-name: pointerEventTime;
+}
+@keyframes pointerEventTime {
+  0% {
+    pointer-events: none;
+  }
+  90% {
+    pointer-events: none;
+  }
+  100% {
+    pointer-events: auto;
+  }
+}
+.fadeOutTexts {
+  opacity: 0;
+  animation: 1s linear;
+  animation-fill-mode: backwards;
+  animation-name: fadeOutTexts;
+}
+@keyframes fadeOutTexts {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.enterLine1,
+.enterLine2,
+.enterLine3,
+.enterLine4,
+.enterLine5 {
+  /* When working with block element: */
+  margin: auto;
+  width: 80%;
+  max-width: 600px;
+}
+.enterLine1 {
+  animation-duration: $enterLine1Duration;
+  animation-name: enterLine1;
+}
+@keyframes enterLine1 {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 80%;
+  }
+}
+.enterLine2 {
+  animation-duration: $enterLine1Duration + 0.2s;
+  animation-name: enterLine2;
+}
+@keyframes enterLine2 {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 80%;
+  }
+}
+.enterLine3 {
+  animation-duration: $enterLine1Duration + 0.4s;
+  animation-name: enterLine3;
+}
+@keyframes enterLine3 {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 80%;
+  }
+}
+.enterLine4 {
+  animation-duration: $enterLine1Duration + 0.6s;
+  animation-name: enterLine4;
+}
+@keyframes enterLine4 {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 80%;
+  }
+}
+.enterLine5 {
+  animation-duration: $enterLine1Duration + 0.8s;
+  animation-name: enterLine4;
+}
+@keyframes enterLine4 {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 80%;
+  }
+}
+.exitLine1,
+.exitLine2,
+.exitLine3,
+.exitLine4 {
+  margin: auto;
+  width: 80%;
+  max-width: 600px;
+}
+// TEXT ENTRANCE TIMING:
+.enterTexts {
+  animation-duration: $enterLine1Duration;
+  animation-name: enterTexts;
+}
+@keyframes enterTexts {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  80% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ***** MOBILE ***** */
+@media (max-width: 700px) {
+  .content {
+    top: 25%;
+  }
+  .content h1 {
+    font-size: 2rem;
+    line-height: 5rem;
+  }
+}

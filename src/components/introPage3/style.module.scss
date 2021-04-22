@@ -1,0 +1,100 @@
+// IMAGES ARE HERE:
+@import "../../assets/images/homePage/introPage3.scss";
+// ANIMATIONS:
+@import "../../styles/animations.scss";
+@import "../../styles/texts.scss";
+@import "../../styles/imageAnimations.scss";
+// VARIABLES
+@import "../../styles/variables.scss";
+
+.grid {
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+  overflow: hidden;
+  height: $heightGlobal;
+  width: $widthGlobal;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "leftGrid rightUp"
+    "leftGrid rightDown";
+}
+// gridLeftCropper NEEDED to hide right part of entrance:
+.gridLeftCropper {
+  grid-area: leftGrid;
+  overflow: hidden;
+}
+.gridLeft {
+  // overflow: hidden;
+  // height: 100vh;
+  // IMAGE AT @import "../../assets/images/homePage/introPage3.scss";
+  // background-image: url("../../assets/images/homePage/inspiration.jpg");
+  background-color: rgb(0, 0, 0);
+  // height: 100vh;
+  height: $heightGlobal;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: brightness(0.6) grayscale(30%);
+}
+.gridRightUp {
+  overflow: hidden;
+  grid-area: rightUp;
+  position: relative;
+  background-color: rgb(119, 47, 43);
+}
+.gridRightUp h1 {
+  @include textH1Messages();
+}
+.gridRightDown {
+  grid-area: rightDown;
+  // TRANSPARENT:
+  background-color: rgba(0, 0, 0, 0);
+  background-position: center;
+  background-position: 60%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+// ANIMATIONS:
+// COMPONENT LOADING:
+.stayOutside .gridLeftCropper {
+  @include stayOutsideLeft();
+}
+.stayOutside .gridRightUp {
+  @include stayOutsideRight();
+}
+.stayOutside .gridRightDown {
+  @include stayOutsideRight();
+}
+// ENTER and GO OUT:
+.enterThirdPage .gridRightUp {
+  @include rightGoesInFromRight();
+}
+.enterThirdPage .enterTextFromRight h1 {
+  @include textComeUpRightToLeft();
+}
+.enterThirdPage .enterTextFromLeft h1 {
+  @include textComeUpLeftToRight();
+}
+.enterThirdPage .gridLeft {
+  @include rightGoesInFromRight();
+}
+.translateXStays0 .gridLeft {
+  @include translateXStays0();
+}
+.translateXStays0 h1 {
+  @include textComeUpLeftToRight();
+}
+// BACK TO SECOND PAGE:
+.backToSecond .gridRightUp {
+  @include rightGoesOutRight();
+}
+.backToSecond .gridLeft {
+  // @include rightGoesOutRight();
+  @include rightWasLeftBackToRight();
+}
+.exitToPage4 .gridRightUp {
+  @include leftGoesOutLeft();
+}
