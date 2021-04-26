@@ -1,6 +1,5 @@
-// TO BE IMPORTED ON APP.JS:
-
-import React, { useContext, useState } from "react";
+// IMPORTED ON APP.JS:
+import React, { useContext, useState } from 'react';
 
 const MenuIsOnContext = React.createContext();
 const MenuIsOnToFalse = React.createContext();

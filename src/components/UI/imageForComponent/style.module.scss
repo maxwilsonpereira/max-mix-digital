@@ -1,5 +1,5 @@
 .contactImage {
-  background-image: url("../../../assets/images/homePage/contact.jpg");
+  background-image: url('../../../assets/images/homePage/contact.jpg');
 }
 .container {
   filter: brightness(10%);
@@ -15,7 +15,7 @@
 
 .enterImage {
   animation: enterImage 1.8s ease-in-out;
-  //   animation-fill-mode: both;
+  animation-fill-mode: both;
   // animation-iteration-count: 1;
 }
 @keyframes enterImage {
@@ -27,8 +27,12 @@
     filter: brightness(50%);
     clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
   }
+  56% {
+    transform: scale(1);
+  }
   100% {
     filter: brightness(10%);
+    transform: scale(1.1);
   }
 }
 .hideImage {
@@ -40,12 +44,14 @@
 @keyframes hideImage {
   0% {
     clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    transform: scale(1.1);
   }
   99% {
     // display: inline;
     clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%);
   }
   100% {
+    transform: scale(1);
     // display: none;
   }
 }

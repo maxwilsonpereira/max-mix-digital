@@ -13,10 +13,9 @@ const Descriptions = [
     href: 'https://canaldamariasanta.com/',
   },
   {
-    title: 'GitHub Developers',
-    description:
-      'React, JavaScript, HTML, CSS / SCSS, Node.js, MongoDB, GitHub API, Facebook API, SendGrid',
-    href: 'https://githubdevs.web.app/',
+    title: 'Tax Declaration',
+    description: 'React, JavaScript, HTML, CSS, Node.js, MongoDB',
+    href: 'https://taxdeclarationapp.web.app/',
   },
   {
     title: 'Real Estate',
@@ -29,9 +28,10 @@ const Descriptions = [
     href: 'https://luizphotography.web.app/',
   },
   {
-    title: 'Tax Declaration',
-    description: 'React, JavaScript, HTML, CSS, Node.js, MongoDB',
-    href: 'https://taxdeclarationapp.web.app/',
+    title: 'GitHub Developers',
+    description:
+      'React, JavaScript, HTML, CSS / SCSS, Node.js, MongoDB, GitHub API, Facebook API, SendGrid',
+    href: 'https://githubdevsapp.web.app/',
   },
   {
     title: 'Max Mix',

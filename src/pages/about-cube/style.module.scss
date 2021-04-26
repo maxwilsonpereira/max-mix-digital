@@ -1,6 +1,6 @@
 .about {
   // background-color: #5a81f9;
-  background-image: url("../../assets/images/cubeAbout/about.jpg");
+  background-image: url('../../assets/images/cubeAbout/about.jpg');
   /* Center and scale the image nicely */
   background-position: center;
   background-repeat: no-repeat;
@@ -20,11 +20,15 @@
     filter: brightness(100%);
     clip-path: polygon(0% 20%, 100% 20%, 100% 80%, 0% 80%);
   }
+  56% {
+    transform: scale(1);
+  }
   99% {
     clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
   }
   100% {
     filter: brightness(30%);
+    transform: scale(1.1);
   }
 }
 .fadeInLogo {

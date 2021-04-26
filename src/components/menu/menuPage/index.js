@@ -1,32 +1,29 @@
-import React, { useState, useEffect } from "react";
-
+import React, { useState, useEffect } from 'react';
 // npm install --save react-router-dom
-import { Link } from "react-router-dom";
-
-import classes from "./style.module.scss";
-
-import popClick from "../../../assets/sounds/popSound.mp3";
+import { Link } from 'react-router-dom';
+import classes from './style.module.scss';
+import popClick from '../../../assets/sounds/popSound.mp3';
 
 export default function MenuPage(props) {
-  const [projectPage, setProjectPage] = useState("");
-  const [aboutPage, setAboutPage] = useState("");
-  const [aboutCubePage, setAboutCubePage] = useState("");
-  const [contactPage, setContactPage] = useState("");
+  const [projectPage, setProjectPage] = useState('');
+  const [aboutPage, setAboutPage] = useState('');
+  const [aboutCubePage, setAboutCubePage] = useState('');
+  const [contactPage, setContactPage] = useState('');
 
   useEffect(() => {
     let url = window.location.href;
-    let words = url.split("/");
+    let words = url.split('/');
     // console.log(words);
     const lastWord = words[words.length - 1];
-    if (lastWord === "projects") {
-      setProjectPage("currentPage");
-    } else if (lastWord === "about") {
-      setAboutPage("currentPage");
-    } else if (lastWord === "about-cube") {
-      setAboutCubePage("currentPage");
+    if (lastWord === 'projects') {
+      setProjectPage('currentPage');
+    } else if (lastWord === 'about') {
+      setAboutPage('currentPage');
+    } else if (lastWord === 'about-cube') {
+      setAboutCubePage('currentPage');
     }
-    if (lastWord === "contact") {
-      setContactPage("currentPage");
+    if (lastWord === 'contact') {
+      setContactPage('currentPage');
     }
   }, []);
 
@@ -38,7 +35,7 @@ export default function MenuPage(props) {
   }
 
   return (
-    <div className={[classes.menuContainer, classes[props.fadeMenu]].join(" ")}>
+    <div className={[classes.menuContainer, classes[props.fadeMenu]].join(' ')}>
       <div className={classes.content}>
         <hr className={classes[`${props.enterLines}1`]} />
         {/* WAITING TIME TO ALLOW POINTER EVENTS: */}
@@ -49,7 +46,7 @@ export default function MenuPage(props) {
                 classes.h1First,
                 classes[props.enterTexts],
                 classes[projectPage],
-              ].join(" ")}
+              ].join(' ')}
               onMouseOver={() => playClick()}
             >
               projects
@@ -62,7 +59,7 @@ export default function MenuPage(props) {
                 classes.h1Second,
                 classes[props.enterTexts],
                 classes[aboutPage],
-              ].join(" ")}
+              ].join(' ')}
               onMouseOver={() => playClick()}
             >
               about
@@ -75,7 +72,7 @@ export default function MenuPage(props) {
                 classes.h1Third,
                 classes[props.enterTexts],
                 classes[aboutCubePage],
-              ].join(" ")}
+              ].join(' ')}
               onMouseOver={() => playClick()}
             >
               the cube
@@ -87,7 +84,7 @@ export default function MenuPage(props) {
               classes.h1Forth,
               classes[props.enterTexts],
               classes[contactPage],
-            ].join(" ")}
+            ].join(' ')}
             onMouseOver={() => playClick()}
             onClick={() => props.showContact()}
           >

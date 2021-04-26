@@ -1,38 +1,38 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
 // Swipe Detection
 // import Swipe from 'react-easy-swipe';
 // https://reactjsexample.com/easy-handler-for-common-swipe-operations/
 // npm install react-easy-swipe --save
-import Swipe from "react-easy-swipe";
+import Swipe from 'react-easy-swipe';
 
-import classes from "./style.module.scss";
-import classesIcon from "./styleIcon.module.scss";
+import classes from './style.module.scss';
+import classesIcon from './styleIcon.module.scss';
 
-import LogoMaxMix from "../logoMaxMix";
+import LogoMaxMix from '../logoMaxMix';
 
-import Menu from "../menu";
-import ArrowDirection from "../UI/arrowDirection";
+import Menu from '../menu';
+import ArrowDirection from '../UI/arrowDirection';
 
-import Descriptions from "../../assets/images/projects/descriptions";
+import Descriptions from '../../assets/images/projects/descriptions';
 
 export default function ProjectsComponent() {
   const [images, setImages] = useState([]);
-  const [showContent, setShowContent] = useState("dontShowContent");
+  const [showContent, setShowContent] = useState('dontShowContent');
   const [activeImage, setActiveImage] = useState(-1);
-  const [imgBoxPage, setImgBoxPage] = useState("imgBox");
+  const [imgBoxPage, setImgBoxPage] = useState('imgBox');
   const [arrowUp, setArrowUp] = useState(null);
   const [arrowDown, setArrowDown] = useState(null);
-  const [imbBoxElement, setImgBoxElement] = useState("imgBoxElementDown");
+  const [imbBoxElement, setImgBoxElement] = useState('imgBoxElementDown');
 
   let wheelActive = false;
-  let movementDirection = "down";
+  let movementDirection = 'down';
   const transitionPaused = 1000;
 
   useEffect(() => {
-    localStorage.setItem("currentPageProjects", 1);
-    localStorage.setItem("swipeActive", "false");
-    localStorage.setItem("directionDown", true);
+    localStorage.setItem('currentPageProjects', 1);
+    localStorage.setItem('swipeActive', 'false');
+    localStorage.setItem('directionDown', true);
   }, []);
 
   // FIRST LOAD after 1,6 seconds (OVERTURE BLACK):
@@ -40,7 +40,7 @@ export default function ProjectsComponent() {
     let arrayAux = [];
     for (let i = 1; i < 9; i++) {
       arrayAux.push(
-        <div className={[classes.images, classes[`image${i}`]].join(" ")}>
+        <div className={[classes.images, classes[`image${i}`]].join(' ')}>
           <div className={classes.showBackground}></div>
         </div>
       );
@@ -59,20 +59,20 @@ export default function ProjectsComponent() {
     }, 1600);
 
     setTimeout(() => {
-      window.addEventListener("wheel", wheelDirectionHandler);
-      document.addEventListener("keydown", keyDownHandler);
+      window.addEventListener('wheel', wheelDirectionHandler);
+      document.addEventListener('keydown', keyDownHandler);
       // TIME TO ALLOW THE FIRST GOING DOWN AFTER THE INTRO:
     }, 4000);
 
     // REMOVING THE EVENTLISTENERS on "componentWillUnmount":
     return function cleanup() {
-      window.removeEventListener("wheel", wheelDirectionHandler);
-      document.removeEventListener("keydown", keyDownHandler);
+      window.removeEventListener('wheel', wheelDirectionHandler);
+      document.removeEventListener('keydown', keyDownHandler);
     };
   }, []);
 
   function wheelDirectionHandler(event) {
-    const getCurPage = localStorage.getItem("currentPageProjects");
+    const getCurPage = localStorage.getItem('currentPageProjects');
     if (event.deltaY < 0) {
       arrowUpHandler(getCurPage);
     } else if (event.deltaY > 0) {
@@ -80,7 +80,7 @@ export default function ProjectsComponent() {
     }
   }
   function keyDownHandler(event) {
-    const getCurPage = localStorage.getItem("currentPageProjects");
+    const getCurPage = localStorage.getItem('currentPageProjects');
     // "ArrowRight", "ArrowLeft", "ArrowUp", or "ArrowDown"
     // const key = event.key;
     switch (event.key) {
@@ -90,32 +90,34 @@ export default function ProjectsComponent() {
       // case "ArrowRight":
       // Right pressed
       // break;
-      case "ArrowUp":
+      case 'ArrowUp':
         arrowUpHandler(getCurPage);
         break;
-      case "ArrowDown":
+      case 'ArrowDown':
         arrowDownHandler(getCurPage);
+        break;
+      default:
         break;
     }
   }
   // SWIPE FOR PAGE TO GOES DOWN
   function swipeUpHandler() {
-    const swipeActive = localStorage.getItem("swipeActive");
-    if (swipeActive === "true") {
+    const swipeActive = localStorage.getItem('swipeActive');
+    if (swipeActive === 'true') {
       return;
     } else {
-      const getCurPage = localStorage.getItem("currentPageProjects");
+      const getCurPage = localStorage.getItem('currentPageProjects');
       arrowDownHandler(getCurPage);
     }
   }
   // SWIPE FOR PAGE TO GOES UP
   function swipeDownHandler() {
-    const swipeActive = localStorage.getItem("swipeActive");
+    const swipeActive = localStorage.getItem('swipeActive');
     // setTimeout(() => {
-    if (swipeActive === "true") {
+    if (swipeActive === 'true') {
       return;
     } else {
-      const getCurPage = localStorage.getItem("currentPageProjects");
+      const getCurPage = localStorage.getItem('currentPageProjects');
       arrowUpHandler(getCurPage);
     }
   }
@@ -128,34 +130,34 @@ export default function ProjectsComponent() {
       return;
     } else if (parseInt(currentPageProps) === 1) {
       wheelActive = true;
-      localStorage.setItem("swipeActive", "true");
-      movementDirection = "down";
+      localStorage.setItem('swipeActive', 'true');
+      movementDirection = 'down';
       setTimeout(() => {
         if (isMounted) {
-          setImgBoxPage("imbBoxSecondPageNoAnimation");
-          localStorage.setItem("currentPageProjects", 2);
+          setImgBoxPage('imbBoxSecondPageNoAnimation');
+          localStorage.setItem('currentPageProjects', 2);
           wheelActive = false;
-          localStorage.setItem("swipeActive", "false");
+          localStorage.setItem('swipeActive', 'false');
         }
       }, transitionPaused);
-      setImgBoxPage("imbBoxSecondPage");
+      setImgBoxPage('imbBoxSecondPage');
     } else if (parseInt(currentPageProps) === 2) {
       wheelActive = true;
-      localStorage.setItem("swipeActive", "true");
-      if (movementDirection === "up") {
-        setImgBoxElement("imgBoxElementDown");
+      localStorage.setItem('swipeActive', 'true');
+      if (movementDirection === 'up') {
+        setImgBoxElement('imgBoxElementDown');
       }
-      movementDirection = "down";
+      movementDirection = 'down';
       setTimeout(() => {
         if (isMounted) {
-          setImgBoxPage("imbBoxThirdPageNoAnimation");
-          localStorage.setItem("currentPageProjects", 3);
+          setImgBoxPage('imbBoxThirdPageNoAnimation');
+          localStorage.setItem('currentPageProjects', 3);
           wheelActive = false;
-          localStorage.setItem("swipeActive", "false");
-          setImgBoxElement("imgBoxElementUp");
+          localStorage.setItem('swipeActive', 'false');
+          setImgBoxElement('imgBoxElementUp');
         }
       }, transitionPaused);
-      setImgBoxPage("imbBoxThirdPage");
+      setImgBoxPage('imbBoxThirdPage');
       setTimeout(() => {
         if (isMounted) {
           setArrowUp(
@@ -179,34 +181,34 @@ export default function ProjectsComponent() {
       return;
     } else if (parseInt(currentPageProps) === 3) {
       wheelActive = true;
-      localStorage.setItem("swipeActive", "true");
-      movementDirection = "up";
+      localStorage.setItem('swipeActive', 'true');
+      movementDirection = 'up';
       setTimeout(() => {
         if (isMounted) {
-          setImgBoxPage("imbBoxBackToSecondPageNoAnimation");
-          localStorage.setItem("currentPageProjects", 2);
+          setImgBoxPage('imbBoxBackToSecondPageNoAnimation');
+          localStorage.setItem('currentPageProjects', 2);
           wheelActive = false;
-          localStorage.setItem("swipeActive", "false");
+          localStorage.setItem('swipeActive', 'false');
         }
       }, 1500);
-      setImgBoxPage("imbBoxBackToSecondPage");
+      setImgBoxPage('imbBoxBackToSecondPage');
     } else if (parseInt(currentPageProps) === 2) {
       wheelActive = true;
-      localStorage.setItem("swipeActive", "true");
-      if (movementDirection === "down") {
-        setImgBoxElement("imgBoxElementUp");
+      localStorage.setItem('swipeActive', 'true');
+      if (movementDirection === 'down') {
+        setImgBoxElement('imgBoxElementUp');
       }
-      movementDirection = "up";
+      movementDirection = 'up';
       setTimeout(() => {
         if (isMounted) {
-          setImgBoxPage("imgBox");
-          localStorage.setItem("currentPageProjects", 1);
+          setImgBoxPage('imgBox');
+          localStorage.setItem('currentPageProjects', 1);
           wheelActive = false;
-          localStorage.setItem("swipeActive", "false");
-          setImgBoxElement("imgBoxElementDown");
+          localStorage.setItem('swipeActive', 'false');
+          setImgBoxElement('imgBoxElementDown');
         }
       }, 1500);
-      setImgBoxPage("imbBoxBackToFirstPage");
+      setImgBoxPage('imbBoxBackToFirstPage');
       setTimeout(() => {
         if (isMounted) {
           setArrowDown(
@@ -245,24 +247,24 @@ export default function ProjectsComponent() {
           className={[
             classes.containerProjects,
             classes.fadeInAfterResized,
-          ].join(" ")}
+          ].join(' ')}
         >
           <div className={classes.grid}>
             {images.map((imageDiv, index) => (
               <div
                 key={index}
                 onMouseOver={() => {
-                  setShowContent("showContent");
+                  setShowContent('showContent');
                   setActiveImage(index);
                 }}
                 onMouseLeave={() => {
-                  setShowContent("dontShowContent");
+                  setShowContent('dontShowContent');
                   setActiveImage(-1);
                 }}
                 className={[
                   classes[imgBoxPage],
                   classes[`${imbBoxElement}${index + 1}`],
-                ].join(" ")}
+                ].join(' ')}
               >
                 <div
                   className={

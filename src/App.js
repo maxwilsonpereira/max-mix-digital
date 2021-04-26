@@ -1,29 +1,21 @@
-import React, { Suspense } from "react";
-
+import React, { Suspense } from 'react';
 // npm i react-router-dom
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-
-import { MenuIsOnProvider } from "./context/menu";
-
-import "./localStorage";
-
-// import IntroPage from "./pages/intro";
-// import ProjectsPage from "./pages/projects";
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { MenuIsOnProvider } from './context/menu';
+import './localStorage';
+import AboutCubePage from './pages/about-cube';
 
 // LAZY LOADING NEXT PAGES:
 // It will render the component ONLY WHEN / IF needed!
 // React { Suspense } is required to wrap all the Routes.
 const IntroPage = React.lazy(() => {
-  return import("./pages/intro");
+  return import('./pages/intro');
 });
 const ProjectsPage = React.lazy(() => {
-  return import("./pages/projects");
+  return import('./pages/projects');
 });
 const AboutPage = React.lazy(() => {
-  return import("./pages/about");
-});
-const AboutCubePage = React.lazy(() => {
-  return import("./pages/about-cube");
+  return import('./pages/about');
 });
 
 function App() {

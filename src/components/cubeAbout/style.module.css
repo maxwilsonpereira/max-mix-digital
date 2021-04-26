@@ -2,6 +2,7 @@
   /* margin-top: 40vh; */
   /* perspective: 1000px; */
   perspective-origin: 50% 50%;
+  overflow: hidden;
 }
 .cube {
   position: absolute;

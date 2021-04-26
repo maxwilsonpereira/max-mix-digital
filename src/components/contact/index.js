@@ -1,31 +1,34 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
 // EMailJS:
 // https://www.emailjs.com/
 // maxwilsonpereira@gmail.com (Vonogolon)
 // npm install emailjs-com --save
 // https://www.npmjs.com/package/emailjs-com
-import emailjs from "emailjs-com";
+import emailjs from 'emailjs-com';
 
 // Smooth Scroll to Anchor:
 // npm i react-anchor-link-smooth-scroll
 // https://www.npmjs.com/package/react-anchor-link-smooth-scroll
 // import AnchorLink from "react-anchor-link-smooth-scroll";
 
-import classes from "./style.module.scss";
-import Button from "../UI/button";
+import classes from './style.module.scss';
+import Button from '../UI/button';
+// npm i @material-ui/core
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 // npm i react-icons
 // https://react-icons.github.io/react-icons/
-import { MdEmail } from "react-icons/md";
-import { MdCall } from "react-icons/md";
+import { MdEmail } from 'react-icons/md';
+import { MdCall } from 'react-icons/md';
 
 export default function Contato(props) {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [telephone, setTelephone] = useState("");
-  const [message, setMessage] = useState("");
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [telephone, setTelephone] = useState('');
+  const [message, setMessage] = useState('');
   const [messageToUser, setMessageToUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     let isMounted = true; // note this flag denote mount status
@@ -79,27 +82,30 @@ export default function Contato(props) {
       return;
     } else {
       // SENDING MESSAGE:
+      setIsLoading(true);
       // npm install emailjs-com --save
       const templateParams = {
         from_name: name,
         from_email: email,
         from_telefone: telephone,
-        to_name: "maxwilsonpereira@gmail.com",
+        to_name: 'maxwilsonpereira@gmail.com',
         message: message,
       };
       emailjs
         .send(
           // SERVICE ID:
-          "gmail",
+          'gmail',
           // TEMPLATE ID (get at emailjs.com / Email Templates):
-          "max_template_2",
+          'max_template_2',
           // PARAMS:
           templateParams,
           // USER ID (get at emailjs.com / Account/API KEYS):
-          "user_UD6GHnWA9A9R2eXaKuLwf"
+          'user_UD6GHnWA9A9R2eXaKuLwf'
         )
         .then(
+          // FROM: https://www.emailjs.com/docs/sdk/send/
           function (response) {
+            setIsLoading(false);
             setMessageToUser(
               <div className={classes.MessageToUser}>
                 Message sent successfully!
@@ -108,13 +114,14 @@ export default function Contato(props) {
                 {/* Em breve entrarei em contato. */}
               </div>
             );
-            console.log("SUCCESS!", response.status, response.text);
-            setName("");
-            setEmail("");
-            setTelephone("");
-            setMessage("");
+            console.log('SUCCESS!', response.status, response.text);
+            setName('');
+            setEmail('');
+            setTelephone('');
+            setMessage('');
           },
           function (err) {
+            setIsLoading(false);
             setMessageToUser(
               <div className={classes.MessageToUser}>
                 Service currently unavailable
@@ -141,7 +148,7 @@ export default function Contato(props) {
     // <div className={classes[props.closeFormClass]}>
     <div
       className={[classes.containerContact, classes[props.closeFormClass]].join(
-        " "
+        ' '
       )}
     >
       <div className={classes.contactGrid}>
@@ -210,11 +217,15 @@ export default function Contato(props) {
             value={message}
           />
           <div className={classes.SubmitBtn}>
-            {/* <AnchorLink href="#anchorPoint"> */}
-            <Button btnColor={props.btnColor} function={sendEmailHandler}>
-              SEND
-            </Button>
-            {/* </AnchorLink> */}
+            {isLoading ? (
+              <div className={classes.progressCircle}>
+                <CircularProgress color="primary" />
+              </div>
+            ) : (
+              <Button btnColor={props.btnColor} function={sendEmailHandler}>
+                SEND
+              </Button>
+            )}
           </div>
           {/* <span className={classes.mobileOnly}>
           <br />
