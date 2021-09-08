@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-// EMailJS:
-// https://www.emailjs.com/
-// maxwilsonpereira@gmail.com (Vonogolon)
-// npm install emailjs-com --save
-// https://www.npmjs.com/package/emailjs-com
+// EMailJS: look file .env.local
 import emailjs from 'emailjs-com';
 
 // Smooth Scroll to Anchor:
@@ -101,7 +97,7 @@ export default function Contato(props) {
           // PARAMS:
           templateParams,
           // USER ID (get at emailjs.com / Account/API KEYS):
-          'user_UD6GHnWA9A9R2eXaKuLwf'
+          process.env.REACT_APP_EMAILJS_KEY
         )
         .then(
           // FROM: https://www.emailjs.com/docs/sdk/send/
@@ -109,9 +105,9 @@ export default function Contato(props) {
             setIsLoading(false);
             setMessageToUser(
               <div className={classes.MessageToUser}>
-                Message sent successfully!
+                Thank you for your message.
                 {/* Mensagem enviada com sucesso! */}
-                <br />I will contact you soon!
+                <br />I will contact you soon.
                 {/* Em breve entrarei em contato. */}
               </div>
             );

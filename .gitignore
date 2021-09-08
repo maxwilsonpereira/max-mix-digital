@@ -23,5 +23,6 @@ yarn-debug.log*
 yarn-error.log*
 
 # MAX:
+/src/components/contact/index.js
 .firebase
 _FIRST_VERSION_IMAGES
