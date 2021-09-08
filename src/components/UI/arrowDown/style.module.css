@@ -9,8 +9,8 @@
   transform: translate(-50%, -50%);
   /* CIRCLE: */
   border: 3px solid rgb(255, 255, 255, 0.6);
-  height: 60px;
-  width: 60px;
+  height: 80px;
+  width: 80px;
   border-radius: 50%;
   /* display: inline-block; */
   /* padding: 5px; */
@@ -38,17 +38,6 @@
   }
 }
 
-/* HEIGHTS MEDIA */
-@media (max-height: 500px) {
-  .arrowDown {
-    top: 85%;
-  }
-}
-@media (max-height: 250px) {
-  .arrowDown {
-    display: none;
-  }
-}
 .arrowDown .boxAux {
   position: absolute;
   top: 50%;
@@ -57,24 +46,25 @@
 }
 .arrowDown .boxAux span {
   display: block;
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   border-bottom: 2px solid rgb(255, 255, 255, 0.6);
   border-right: 2px solid rgb(255, 255, 255, 0.6);
   transform: rotate(45deg);
   margin: -5px 0px -1px 0px;
   /* animation: animate 2s infinite; */
 }
-.arrowDown:hover {
+/* .arrowDown:hover */
+.arrowDown {
   transform: scale(0.96) translate(-52%, -52%);
 }
-.arrowDown:hover > .boxAux span:nth-child(1) {
+.arrowDown > .boxAux span:nth-child(1) {
   animation: animate1 1.5s infinite;
 }
-.arrowDown:hover > .boxAux span:nth-child(2) {
+.arrowDown > .boxAux span:nth-child(2) {
   animation: animate2 1.5s infinite;
 }
-.arrowDown:hover > .boxAux span:nth-child(3) {
+.arrowDown > .boxAux span:nth-child(3) {
   animation: animate3 1.5s infinite;
 }
 @keyframes animate1 {
@@ -140,29 +130,6 @@
   }
 }
 
-@media (max-width: 1000px) {
-  .arrowDown {
-    height: 50px;
-    width: 50px;
-  }
-  .arrowDown .boxAux span {
-    width: 14px;
-    height: 14px;
-  }
-}
-
-/* ***** MOBILE ***** */
-@media (max-width: 500px) {
-  .arrowDown {
-    height: 40px;
-    width: 40px;
-  }
-  .arrowDown .boxAux span {
-    width: 12px;
-    height: 12px;
-  }
-}
-
 /********* ARROW UP: **********/
 .arrowUp {
   position: absolute;
@@ -174,8 +141,8 @@
   transform: translate(-50%, -50%);
   /* CIRCLE: */
   border: 3px solid rgb(255, 255, 255, 0.6);
-  height: 60px;
-  width: 60px;
+  height: 80px;
+  width: 80px;
   border-radius: 50%;
   /* display: inline-block; */
   /* padding: 5px; */
@@ -212,24 +179,25 @@
 }
 .arrowUp .boxAux span {
   display: block;
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   border-bottom: 2px solid rgb(255, 255, 255, 0.6);
   border-right: 2px solid rgb(255, 255, 255, 0.6);
   transform: rotate(225deg);
   margin: -0px 0px -6px 0px;
   /* animation: animate 2s infinite; */
 }
-.arrowUp:hover {
+/* .arrowUp:hover */
+.arrowUp {
   transform: scale(0.96) translate(-52%, -52%);
 }
-.arrowUp:hover > .boxAux span:nth-child(3) {
+.arrowUp > .boxAux span:nth-child(3) {
   animation: animate1 1.5s infinite;
 }
-.arrowUp:hover > .boxAux span:nth-child(2) {
+.arrowUp > .boxAux span:nth-child(2) {
   animation: animate2 1.5s infinite;
 }
-.arrowUp:hover > .boxAux span:nth-child(1) {
+.arrowUp > .boxAux span:nth-child(1) {
   animation: animate3 1.5s infinite;
 }
 @keyframes animate1 {
@@ -280,28 +248,27 @@
   }
 }
 
-@media (max-width: 1000px) {
-  .arrowUp {
-    height: 50px;
-    width: 50px;
+@media (max-width: 700px) {
+  .arrowDown {
+    top: 90%;
   }
-  .arrowUp .boxAux span {
-    width: 14px;
-    height: 14px;
+  .arrowUp {
+    top: 90%;
   }
 }
 
-/* ***** MOBILE ***** */
-@media (max-width: 500px) {
-  .arrowUp {
-    height: 40px;
-    width: 40px;
-  }
-  .arrowUp .boxAux span {
-    width: 12px;
-    height: 12px;
+/* HEIGHTS MEDIA */
+@media (max-height: 500px) {
+  .arrowDown {
+    top: 85%;
   }
 }
+@media (max-height: 250px) {
+  .arrowDown {
+    display: none;
+  }
+}
+
 /* HEIGHTS MEDIA */
 @media (max-height: 500px) {
   .arrowUp {

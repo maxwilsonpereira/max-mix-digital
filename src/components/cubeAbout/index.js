@@ -29,7 +29,13 @@ export default function Cube3d(props) {
   return (
     <div className={classes.wrap}>
       <span className={classes[props.closeCubeClass]}>
-        <div className={[classes.cube, classes[cubeHover]].join(' ')}>
+        <div
+          className={[
+            classes.cube,
+            classes[cubeHover],
+            props.smallVersion && classes.smallVersion,
+          ].join(' ')}
+        >
           {/* // IMG 1 with NO LINK: */}
           <img className={classes.imageNoPointer} src={Img1} alt="" />
           {/* OTHER 5 IMAGES with links: */}

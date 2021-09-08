@@ -170,6 +170,19 @@
     transform: translate(-50%, -50%) scale(1);
   }
 }
+@mixin textAnimationAgain() {
+  animation: $speedTextAnimation ease-in-out;
+  animation-name: textAnimationAgain;
+  animation-fill-mode: backwards;
+}
+@keyframes textAnimationAgain {
+  0% {
+    transform: translate(-260%, 2200%) scale(0.2);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
 @mixin textFadeIn() {
   animation: 2s ease-in-out;
   animation-name: fadeInText;
@@ -183,5 +196,25 @@
   }
   100% {
     opacity: 1;
+  }
+}
+@mixin sentencesFont {
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  font-family: 'Courier New', Courier, monospace;
+  font-style: normal;
+  width: 100%;
+  -webkit-text-size-adjust: 100%;
+  font-size: 1.6rem;
+  line-height: 1.4;
+  font-weight: 100;
+  color: #175849;
+  font-weight: bold;
+  font-style: italic;
+  @media (max-width: 1000px) {
+    font-size: 3.2vw;
   }
 }

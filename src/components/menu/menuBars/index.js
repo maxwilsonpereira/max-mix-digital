@@ -63,7 +63,7 @@ function MenuBars(props) {
       setBar2(['enterBar', 'enterBar2']);
       setBar3(['enterBar', 'enterBar3']);
       setBounce('NObounceX');
-      props.hideMenuHandler();
+      props.hideMenuHandler(props.firstPage);
       setTimeout(() => {
         setDisableClick('enableClick');
       }, 1500);
@@ -95,6 +95,7 @@ function MenuBars(props) {
 
 const mapStateToProps = (state) => {
   return {
+    firstPage: state.global.firstPage,
     lastPage: state.global.lastPage,
     showMenu: state.global.showMenu,
   };

@@ -1,140 +1,154 @@
 // ANIMATIONS:
-@import "../../styles/texts.scss";
+@import '../../styles/texts.scss';
 // VARIABLES:
-@import "../../styles/variables.scss";
+@import '../../styles/variables.scss';
 
-.containerAbsolute {
+.rootAbsolute {
   position: absolute;
-  // height: 100vh;
-  // width: 100vw;
-  height: $heightGlobal;
-  width: $widthGlobal;
   overflow: hidden;
   z-index: 1;
-}
-.backgroundImage1,
-.backgroundImage4 {
-  background-image: url("../../assets/images/jpg/main1.jpg");
-  animation: 18s infinite ease-out;
-  animation-name: changeImg;
-}
-.backgroundImage2 {
-  background-image: url("../../assets/images/jpg/main2.jpg");
-}
-.backgroundImage3 {
-  background-image: url("../../assets/images/jpg/main3.jpg");
-}
-/* codes for the image slider */
-#slider {
-  overflow: hidden;
-}
-
-#slider figure {
-  position: relative;
-  width: 400%; /* 100% for each picture, 4 pictures = 300% */
-  margin: 0;
-  left: 0;
-  animation: 18s infinite ease-out;
-  animation-name: sliderAnimation;
-}
-@keyframes sliderAnimation {
-  0% {
-    left: 0;
-    // pointer-events: auto;
-  } /* you must divide 100% fot the amout of images you have */
-  30% {
-    left: 0%;
-  }
-  /* smaller these intermediate steps, faster will be the transition speed */
-  33% {
-    left: -100%;
-    pointer-events: auto;
-  } /* because my total width: 400% (4x 100% for 4 images) */
-  // Because the first and the last are the same, total are 3 images. +- 33% for each image
-  63% {
-    left: -100%;
-  }
-  66% {
-    pointer-events: auto;
-    left: -200%;
-  }
-  96% {
-    left: -200%;
-  }
-  // HERE IT CHANGES FOR THE FIRST AGAIN, and comes back to beggin on 0%:
-  // 99% {
-  //   left: -300%;
-  // }
-  100% {
-    pointer-events: none;
-    left: -300%;
-  }
-}
-#slider figure div {
-  width: 25%; /* 100 / 4 pictures = 25% */
-  height: 100vh;
-  float: left;
-  padding: 0;
-  margin: 0;
-
-  filter: brightness(99%);
-  /* NEXT FLOAT TO DON'T ALLOW MISTERIOUS MARGIN: */
-  // float: left;
-  // transition: 4s ease-in-out;
-}
-
-figure h1 {
-  @include mainTitle();
-}
-.descriptions {
-  @include mainTitleDescription();
-}
-// figure h1:hover {
-//   transition: 0.3s ease;
-//   transform: translate(-50%, -50%) scale(1.1);
-//   opacity: 0.6;
-// }
-.backgroundImage1,
-.backgroundImage2,
-.backgroundImage3,
-.backgroundImage4 {
-  position: relative;
   height: $heightGlobal;
   width: $widthGlobal;
-  text-align: center;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  transition: 6s ease-out;
+  // background-image: linear-gradient(120deg, #a5c1d4, #275b7e);
+  // background-image: linear-gradient(120deg, #ffffff, #969696);
+  filter: brightness(0.6) grayscale(30%);
+  background-image: linear-gradient(220deg, #bd4e42, #b45346);
 }
-.resizeAnimationStopper {
-  animation: none !important;
-  transition: none !important;
+.contentContainer {
+  position: relative;
 }
-
-// BEFORE: You are creating a "new element" before
-// the referred one, here: .backgroundImage1, 2 and 3.
-// You are inheriting the backgroung and after, you are
-// making zoom only this "new element"'s background:
-.backgroundImage1::before,
-.backgroundImage2::before,
-.backgroundImage3::before,
-.backgroundImage4::before {
-  content: "";
+.maxImage {
   position: absolute;
-  top: 0;
-  right: 0;
+  height: 95vh;
+  min-height: 600px;
   bottom: 0;
-  left: 0;
-  background: inherit;
-  transition: inherit;
+  right: 0;
+  transition: 0.4s ease-in-out;
+  @media (max-width: 1000px) {
+    right: -100px;
+  }
+  @media (max-width: 600px) {
+    height: 85vh;
+  }
+  @media (max-height: 500px) {
+    bottom: -140px;
+  }
+  @media (max-width: 1000px) {
+    // opacity: 0.6;
+    right: -100px;
+    bottom: -140px;
+  }
 }
-.imgZoomIn::before {
-  transform: scale(1.2);
+.containerTexts {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 0;
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 50px;
+  @media (max-width: 1000px) {
+    padding: 40px;
+  }
 }
-.imgZoomIn h1 {
-  cursor: default;
-  transition: 0.2s linear;
-  transform: translate(-50%, -50%) scale(1.01);
-  opacity: 0.9;
+.downTextContainer {
+  position: absolute;
+  bottom: 200px;
+  @media (max-width: 800px) {
+    // bottom: 40px;
+  }
+  @media (max-height: 800px) {
+    // bottom: 60px;
+  }
+  @media (max-width: 350px) {
+    display: none;
+  }
+}
+.name {
+  font-family: 'Helvetica Now Display DW', sans-serif;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: normal;
+  -webkit-text-size-adjust: 100%;
+  color: #0f141e;
+  font-size: 3.5rem;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  @media (max-width: 800px) {
+    font-size: 2.2rem;
+  }
+}
+.title {
+  font-family: 'Helvetica Now Display DW', sans-serif;
+  font-style: normal;
+  -webkit-text-size-adjust: 100%;
+  font-size: 4rem;
+  line-height: 3rem;
+  padding-top: 5px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #0f141e;
+  transition: 0.4s ease-in-out;
+  @media (max-width: 800px) {
+    font-size: 2.5rem;
+    line-height: 2.4rem;
+  }
+}
+.descriptions {
+  max-width: 1000px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-style: normal;
+  -webkit-text-size-adjust: 100%;
+  font-size: 1.6rem;
+  line-height: 2rem;
+  padding-bottom: 20px;
+  font-weight: bold;
+  font-style: italic;
+  letter-spacing: -0.01em;
+  color: #2e2e2e;
+  @media (max-width: 1500px) {
+    max-width: 800px;
+  }
+  @media (max-width: 1000px) {
+    max-width: 90%;
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+  }
+  @media (max-height: 550px) {
+    display: none;
+  }
+}
+.sentences {
+  font-family: 'Helvetica Now Display DW', sans-serif;
+  font-style: normal;
+  max-width: 95%;
+  -webkit-text-size-adjust: 100%;
+  font-size: 1.2rem;
+  // line-height: 1rem;
+  padding-top: 10px;
+  font-weight: 100;
+  letter-spacing: -0.01em;
+  color: #363636;
+  @media (max-width: 1000px) {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+}
+.squareToMenuBars {
+  position: absolute;
+  right: 13px;
+  top: 17px;
+  height: 50px;
+  width: 52px;
+  background: rgb(204, 204, 204);
+  border-radius: 5px;
+  /* ***** MOBILE TOGETHER WITH MENU BARS ***** */
+  @media (max-width: 700px) {
+    height: 45px;
+    width: 50px;
+    top: 10px;
+    right: 14px;
+  }
 }

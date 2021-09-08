@@ -1,4 +1,4 @@
-@import "../../styles/variables.scss";
+@import '../../styles/variables.scss';
 
 // .maxMixLogo {
 //   position: absolute;
@@ -42,7 +42,7 @@
 }
 .loadingLine {
   position: absolute;
-  content: "";
+  content: '';
   width: 0%;
   opacity: 0;
   height: 2px;

@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 // npm i react-redux
-import { connect } from "react-redux";
-import * as actionTypes from "../../store/actions/actionsIndex";
+import { connect } from 'react-redux';
+import * as actionTypes from '../../store/actions/actionsIndex';
+import classes from './style.module.scss';
+import image1 from '../../assets/images/homePage/page6a.jpg';
+import image2 from '../../assets/images/homePage/contact.jpg';
 
-import classes from "./style.module.scss";
-
-const frases = ["Are you ready to turn your idea into reality?", "Contact us!"];
+const frases = ['Do you want to hire me?', 'Contact me!'];
 
 // localStorage.setItem("page6CurFrase", 0);
 
@@ -20,13 +21,16 @@ function IntroPage6(props) {
         if (isMounted) {
           setGrid2(
             <div
-              className={[classes.grid2, classes[props.animation]].join(" ")}
+              className={[classes.grid2, classes[props.animation]].join(' ')}
             >
-              <div className={classes.grid2Right}></div>
+              <div className={classes.grid2Right}>
+                <img className={classes.images} src={image2} alt="" />
+              </div>
               <div className={classes.grid2Left}>
                 <h2 onClick={showMenu} className={classes.clickContact}>
                   {frases[1]}
                 </h2>
+                <p className={classes.sentences}>amor fati</p>
               </div>
             </div>
           );
@@ -40,14 +44,17 @@ function IntroPage6(props) {
   }, [props.startImage2]);
 
   useEffect(() => {
-    if (props.animation === "exitPage6") {
+    if (props.animation === 'exitPage6') {
       setGrid2(
-        <div className={[classes.grid2, classes[props.animation]].join(" ")}>
-          <div className={classes.grid2Right}></div>
+        <div className={[classes.grid2, classes[props.animation]].join(' ')}>
+          <div className={classes.grid2Right}>
+            <img className={classes.images} src={image2} alt="" />
+          </div>
           <div className={classes.grid2Left}>
             <h2 onClick={showMenu} className={classes.clickContact}>
               {frases[1]}
             </h2>
+            <p className={classes.sentences}>amor fati</p>
           </div>
         </div>
       );
@@ -62,11 +69,13 @@ function IntroPage6(props) {
   }
   return (
     <>
-      <div className={[classes.grid, classes[props.animation]].join(" ")}>
+      <div className={[classes.grid, classes[props.animation]].join(' ')}>
         <div className={classes.gridLeft}>
           <h1>{frases[0]}</h1>
         </div>
-        <div className={classes.gridRight}></div>
+        <div className={classes.gridRight}>
+          <img className={classes.images} src={image1} alt="" />
+        </div>
       </div>
       {grid2}
     </>

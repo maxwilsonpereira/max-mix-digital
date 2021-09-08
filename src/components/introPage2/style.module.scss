@@ -1,11 +1,11 @@
-// IMAGES ARE HERE:
-@import "../../assets/images/homePage/introPage2.scss";
+// ********** IMAGES ARE HERE **********
+@import '../../assets/images/homePage/introPage2.scss';
 // ANIMATIONS:
-@import "../../styles/animations.scss";
-@import "../../styles/texts.scss";
-@import "../../styles/zoomImages.scss";
+@import '../../styles/animations.scss';
+@import '../../styles/texts.scss';
+@import '../../styles/zoomImages.scss';
 // VARIABLES:
-@import "../../styles/variables.scss";
+@import '../../styles/variables.scss';
 
 .grid {
   position: absolute;
@@ -18,10 +18,13 @@
   grid-template-columns: 50% 50%;
   grid-template-rows: auto;
   grid-template-areas:
-    "leftFull rightUp"
-    "leftFull rightDown";
+    'leftFull rightUp'
+    'leftFull rightDown';
 }
 .gridLeft {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
   grid-area: leftFull;
   // IMAGE AT @import "../../assets/images/homePage/introPage2.scss";
   // background-image: url("../../assets/images/homePage/woodBack.jpg");
@@ -29,33 +32,17 @@
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  background-color: rgb(0, 0, 0);
-  // height: 100vh;
-  // width: 100vw;
+  filter: brightness(0.7) grayscale(30%);
+  background-image: linear-gradient(120deg, #459b87, #22725f);
 }
-.imgsContainer {
-  position: absolute;
-  // width: 100%;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  text-align: center;
-  align-content: center;
-  // animation: 1s ease-in-out;
-  // animation-name: fadeInImage;
+.cubeContainer {
+  margin-top: 200px;
+  transform: scale(0.6);
 }
-// @keyframes fadeInImage {
-//   0% {
-//     opacity: 0;
-//   }
-//   40% {
-//     opacity: 0;
-//   }
-//   100% {
-//     opacity: 1;
-//   }
-// }
+.sentences {
+  @include sentencesFont();
+  color: #175849;
+}
 .pngImages {
   max-width: 350px;
   animation: 4s infinite ease-in-out;
@@ -82,14 +69,21 @@
   }
 }
 .gridRightUp {
+  overflow: hidden;
   grid-area: rightUp;
   position: relative;
-  background-color: rgb(22, 60, 90);
-  // background-color: rgb(190, 178, 0);
+  // background-image: linear-gradient(120deg, #459b87, #22725f);
+  // background-image: linear-gradient(220deg, #a34238, #803c33);
+  background-image: linear-gradient(120deg, #09334e, #052235);
 }
 .gridRightUp h1 {
   @include textH1Messages();
 }
+
+.descriptions {
+  @include textH1Messages();
+}
+
 .gridRightDown {
   grid-area: rightDown;
   position: relative;
@@ -119,10 +113,10 @@
 }
 // ENTER AND OUT:
 .zoomInImage {
-  @include zoomInImage();
+  @include zoomInImagePage2();
 }
 .zoomOutImage {
-  @include zoomOutImage();
+  @include zoomOutImagePage2();
 }
 .enterSecondPage .gridLeft {
   @include leftGoesInFromLeft();
@@ -136,6 +130,9 @@
 .enterSecondPage .gridRightUp h1 {
   @include textComeUpRightToLeft();
 }
+// .enterSecondPage .descriptions {
+//   @include textComeUpLeftToRight();
+// }
 .backToFirst .gridLeft {
   @include leftGoesOutLeft();
   animation-fill-mode: backwards;
@@ -161,9 +158,189 @@
 .reverseToSecond h1 {
   @include textComeUpLeftToRight();
 }
+// .reverseToSecond .descriptions {
+//   @include textComeUpRightToLeft();
+// }
 .exitToPage4 .gridRightDown {
   @include leftGoesOutLeft();
 }
 .comeBackFromPage4 .gridRightDown {
   @include leftGoesInFromLeft();
+}
+
+// SKILLS CLASSES:
+.skillsContainer {
+  overflow: hidden;
+  padding: 40px;
+  margin-top: 120px;
+  @media (max-width: 700px) {
+    margin-top: 80px;
+    padding: 20px;
+  }
+  @media (max-height: 720px) {
+    // GALAXY S9:
+    margin-top: 40px;
+    padding: 20px;
+    -webkit-transform: scale(1, 0.8);
+    -moz-transform: scale(1, 0.8);
+    -ms-transform: scale(1, 0.8);
+    transform: scale(1, 0.8);
+  }
+  // @media (max-height: 600px) {
+  //   margin-top: 0px;
+
+  //   -webkit-transform: scale(1, 0.6);
+  //   -moz-transform: scale(1, 0.6);
+  //   -ms-transform: scale(1, 0.6);
+  //   transform: scale(1, 0.6);
+  // }
+  @media (max-height: 330px) {
+    display: none;
+  }
+}
+.skillNameFont {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: bold;
+  font-size: 40px;
+  margin-bottom: 5px;
+  overflow: hidden;
+  @media (max-width: 720px) {
+    font-size: 6vw;
+  }
+  @media (max-width: 600px) {
+    font-size: 7vw;
+  }
+}
+.skillLevel {
+  width: 100%;
+  height: 8px;
+  margin-bottom: 20px;
+  background-color: rgb(255, 255, 255);
+  @media (max-width: 1000px) {
+    height: 0.8vw;
+  }
+  @media (max-width: 800px) {
+    height: 1.2vw;
+  }
+  @media (max-height: 500px) {
+    display: none;
+  }
+}
+.skillNameFont {
+  animation: fadeInNames 2s ease-in-out;
+}
+@keyframes fadeInNames {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+// JAVASCRIPT
+.skillNameFont0 {
+  color: #f7df1e;
+}
+.skill0 {
+  background-color: #f7df1e;
+}
+// TYPESCRIPT
+.skillNameFont1 {
+  color: #3178c6;
+}
+.skill1 {
+  background-color: #3178c6;
+}
+// REACT
+.skillNameFont2 {
+  color: #61dafb;
+}
+.skill2 {
+  background-color: #61dafb;
+}
+// ANGULAR
+.skillNameFont3 {
+  color: #dd0031;
+}
+.skill3 {
+  background-color: #dd0031;
+}
+// HTML
+.skillNameFont4 {
+  color: #e44d26;
+}
+.skill4 {
+  background-color: #e44d26;
+}
+// CSS
+.skillNameFont5 {
+  color: #214ce5;
+}
+.skill5 {
+  background-color: #214ce5;
+}
+// NODE.JS
+.skillNameFont6 {
+  color: #43853d;
+}
+.skill6 {
+  background-color: #43853d;
+}
+
+@for $i from 0 through 2 {
+  .skill#{$i} {
+    animation: loadingLinesGrade10 2.5s ease-in-out;
+    animation-delay: #{$i * 0.05}s;
+    animation-fill-mode: backwards;
+  }
+}
+@for $i from 4 through 5 {
+  .skill#{$i} {
+    animation: loadingLinesGrade10 2s ease-in-out;
+    animation-delay: #{$i * 0.05}s;
+    animation-fill-mode: backwards;
+  }
+}
+// REACT[0] / JAVASCRIPT[1] / TYPESCRIPT[2] / HTML[4] / CSSS[5]
+@keyframes loadingLinesGrade10 {
+  0% {
+    width: 0%;
+    opacity: 0;
+  }
+  10% {
+    width: 0%;
+    opacity: 0;
+  }
+  80% {
+    opacity: 1;
+    width: 70%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+// ANGULAR[3] / NODE.JS[6]
+.skill3,
+.skill6 {
+  animation: loadingLinesGrade8 2.5s ease-in-out;
+  animation-delay: 3 * 0.05s;
+  animation-fill-mode: backwards;
+  width: 80%;
+}
+
+@keyframes loadingLinesGrade8 {
+  0% {
+    width: 0%;
+    opacity: 0;
+  }
+  10% {
+    width: 0%;
+    opacity: 0;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    width: 80%;
+  }
 }

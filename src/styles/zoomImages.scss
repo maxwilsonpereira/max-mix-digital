@@ -1,4 +1,4 @@
-@import "./animations.scss";
+@import './animations.scss';
 
 @mixin zoomInImage() {
   transform: scale(1.15) rotate(1deg);
@@ -23,6 +23,39 @@
   animation-name: zoomOutImage;
 }
 @keyframes zoomOutImage {
+  0% {
+    transform: scale(1.15) rotate(1deg);
+    background-position: 65%;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    background-position: 45%;
+  }
+}
+
+@mixin zoomInImagePage2() {
+  transform: scale(1.15) rotate(1deg);
+  background-position: 65%;
+  animation: $speedPageMovementX2 $typeMovement;
+  animation-name: zoomInImagePage2;
+  animation-fill-mode: backwards;
+}
+@keyframes zoomInImagePage2 {
+  0% {
+    transform: scale(1) rotate(0deg);
+    background-position: 45%;
+  }
+  100% {
+    transform: scale(1.15) rotate(1deg);
+    background-position: 65%;
+  }
+}
+@mixin zoomOutImagePage2() {
+  transform: scale(1);
+  animation: $speedPageMovementX2 $typeMovement;
+  animation-name: zoomOutImagePage2;
+}
+@keyframes zoomOutImagePage2 {
   0% {
     transform: scale(1.15) rotate(1deg);
     background-position: 65%;

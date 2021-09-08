@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import * as actionTypes from '../../store/actions/actionsIndex';
 
 // Swipe Detection
 // import Swipe from 'react-easy-swipe';
@@ -13,10 +15,10 @@ import LogoMaxMix from '../logoMaxMix';
 
 import Menu from '../menu';
 import ArrowDirection from '../UI/arrowDirection';
-
+import MatrixEffect from '../UI/matrixEffect';
 import Descriptions from '../../assets/images/projects/descriptions';
 
-export default function ProjectsComponent() {
+function ProjectsComponent(props) {
   const [images, setImages] = useState([]);
   const [showContent, setShowContent] = useState('dontShowContent');
   const [activeImage, setActiveImage] = useState(-1);
@@ -24,15 +26,39 @@ export default function ProjectsComponent() {
   const [arrowUp, setArrowUp] = useState(null);
   const [arrowDown, setArrowDown] = useState(null);
   const [imbBoxElement, setImgBoxElement] = useState('imgBoxElementDown');
+  const [menuAndLogo, setMenuAndLogo] = useState(null);
 
   let wheelActive = false;
   let movementDirection = 'down';
-  const transitionPaused = 1000;
+  const transitionPaused = 2500; // time to all transitions have ended
 
   useEffect(() => {
+    props.onFirstPageTrue();
+    props.onLastPageFalse();
+
     localStorage.setItem('currentPageProjects', 1);
     localStorage.setItem('swipeActive', 'false');
     localStorage.setItem('directionDown', true);
+
+    setTimeout(() => {
+      setMenuAndLogo(
+        <>
+          <Menu
+            wheelDirectionHandler={wheelDirectionHandler}
+            keyDownHandler={keyDownHandler}
+          />
+          <LogoMaxMix />
+        </>
+      );
+      setArrowDown(
+        <ArrowDirection
+          directionDown={true}
+          onlyShowMobile="onlyShowMobile"
+          arrowDownHandler={swipeUpHandler}
+          arrowUpHandler={swipeDownHandler}
+        />
+      );
+    }, 3500);
   }, []);
 
   // FIRST LOAD after 1,6 seconds (OVERTURE BLACK):
@@ -45,18 +71,10 @@ export default function ProjectsComponent() {
         </div>
       );
     }
-    setArrowDown(
-      <ArrowDirection
-        directionDown={true}
-        onlyShowMobile="onlyShowMobile"
-        arrowDownHandler={swipeUpHandler}
-        arrowUpHandler={swipeDownHandler}
-      />
-    );
-    // OVERTURE black has 4 seconds:
+    // waiting OVERTURE black to come the img cubes:
     setTimeout(() => {
       setImages(arrayAux);
-    }, 1600);
+    }, 1800);
 
     setTimeout(() => {
       window.addEventListener('wheel', wheelDirectionHandler);
@@ -190,7 +208,7 @@ export default function ProjectsComponent() {
           wheelActive = false;
           localStorage.setItem('swipeActive', 'false');
         }
-      }, 1500);
+      }, transitionPaused);
       setImgBoxPage('imbBoxBackToSecondPage');
     } else if (parseInt(currentPageProps) === 2) {
       wheelActive = true;
@@ -207,7 +225,7 @@ export default function ProjectsComponent() {
           localStorage.setItem('swipeActive', 'false');
           setImgBoxElement('imgBoxElementDown');
         }
-      }, 1500);
+      }, transitionPaused);
       setImgBoxPage('imbBoxBackToFirstPage');
       setTimeout(() => {
         if (isMounted) {
@@ -227,6 +245,7 @@ export default function ProjectsComponent() {
 
   return (
     <>
+      <MatrixEffect />
       <Swipe
         onSwipeUp={swipeUpHandler}
         onSwipeDown={swipeDownHandler}
@@ -235,11 +254,7 @@ export default function ProjectsComponent() {
         // onSwipeEnd={}
       >
         <span className={classes.fadeInMenuAndArrows}>
-          <Menu
-            wheelDirectionHandler={wheelDirectionHandler}
-            keyDownHandler={keyDownHandler}
-          />
-          <LogoMaxMix />
+          {menuAndLogo}
           {arrowUp}
           {arrowDown}
         </span>
@@ -300,3 +315,12 @@ export default function ProjectsComponent() {
     </>
   );
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onFirstPageTrue: () => dispatch(actionTypes.firstPageTrue()),
+    onLastPageFalse: () => dispatch(actionTypes.lastPageFalse()),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(ProjectsComponent);

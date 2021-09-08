@@ -1,45 +1,64 @@
-import React, { useState, useEffect, memo } from "react";
+import React, { useEffect, useState } from 'react';
 
-import classes from "./style.module.scss";
+import agile from '../../assets/images/homePage/agile.jpg';
+import matrix from '../../assets/images/homePage/matrix.jpg';
+import github from '../../assets/images/homePage/github.jpg';
+import magritte from '../../assets/images/homePage/magritte.jpg';
 
-const frases = [
-  "make your brand famous worldwide",
-  "because you are as powerful as your imagination",
-];
+import classes from './style.module.scss';
+
+// const frases = [
+//   'an application is a work of art',
+//   'because you are as powerful as your imagination',
+// ];
 
 // localStorage.setItem("page5CurFrase", 0);
 
 function IntroPage5(props) {
-  const [curFrase, setCurFrase] = useState([]);
-  const currentFrase = localStorage.getItem("page5CurFrase");
+  // const [curFrase, setCurFrase] = useState([]);
+  // const currentFrase = localStorage.getItem('page5CurFrase');
+  const [imageUp, setImageUp] = useState(github);
+  const [imageDown, setImageDown] = useState(agile);
+
+  // useEffect(() => {
+  //   if (Number(currentFrase) === 0) {
+  //     setCurFrase(frases[0]);
+  //     // localStorage.setItem("page5CurFrase", 1);
+  //   } else {
+  //     setCurFrase(frases[1]);
+  //     // localStorage.setItem("page5CurFrase", 0);
+  //   }
+  // }, [currentFrase]);
 
   useEffect(() => {
-    if (Number(currentFrase) === 0) {
-      setCurFrase(frases[0]);
-      // localStorage.setItem("page5CurFrase", 1);
+    if (props.image === 'image2') {
+      setImageUp(magritte);
+      setImageDown(matrix);
     } else {
-      setCurFrase(frases[1]);
-      // localStorage.setItem("page5CurFrase", 0);
+      setImageUp(github);
+      setImageDown(agile);
     }
-  }, [currentFrase]);
+  }, [props.image]);
 
   return (
-    <div className={[classes.grid, classes[props.animation]].join(" ")}>
+    <div className={[classes.grid, classes[props.animation]].join(' ')}>
       <div className={classes.gridLeftCropper}>
-        <div className={classes.leftGridUp}></div>
+        <div className={classes.leftGridUp} />
+      </div>
+      <div className={classes.leftGridDown}>
+        <img className={classes.images} src={imageDown} alt="" />
+      </div>
+      <div className={classes.gridRightUp}>
+        <img className={classes.images} src={imageUp} alt="" />
       </div>
       <div
-        className={[classes.leftGridDown, classes[props.imageDown]].join(" ")}
-      ></div>
-      <div
-        className={[classes.gridRightUp, classes[props.image]].join(" ")}
-      ></div>
-      <div
-        className={[classes.gridRightDown, classes[props.enterText]].join(" ")}
+        className={[classes.gridRightDown, classes[props.enterText]].join(' ')}
       >
-        <h1>{curFrase}</h1>
+        <div className={classes.gridLeft}>
+          <p className={classes.sentences}>memento mori</p>
+        </div>
       </div>
     </div>
   );
 }
-export default memo(IntroPage5);
+export default IntroPage5;

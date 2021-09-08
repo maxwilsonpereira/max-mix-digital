@@ -1,9 +1,9 @@
 // IMAGES ARE HERE:
-@import "../../assets/images/about/images.scss";
+@import '../../assets/images/about/images.scss';
 // ANIMATIONS:
-@import "../../styles/animations.scss";
+@import '../../styles/animations.scss';
 // VARIABLES
-@import "../../styles/variables.scss";
+@import '../../styles/variables.scss';
 
 .containerProjects {
   position: absolute;
@@ -20,9 +20,9 @@
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
   grid-template-areas:
-    "imageGrid1 imageGrid1 imageGrid2 imageGrid3"
+    'imageGrid1 imageGrid1 imageGrid2 imageGrid3'
     // "imageGrid1 imageGrid1 imageGrid2 imageGrid3"
-    "imageGrid4 imageGrid5 imageGrid6 imageGrid6";
+    'imageGrid4 imageGrid5 imageGrid6 imageGrid6';
   // "imageGrid4 imageGrid5 imageGrid6 imageGrid6";
 }
 @media (max-width: 1000px) {
@@ -30,10 +30,10 @@
     height: 200%;
     grid-template-columns: 50% 50%;
     grid-template-areas:
-      "imageGrid1 imageGrid1"
-      "imageGrid2 imageGrid3"
-      "imageGrid4 imageGrid5"
-      "imageGrid6 imageGrid6";
+      'imageGrid1 imageGrid1'
+      'imageGrid2 imageGrid3'
+      'imageGrid4 imageGrid5'
+      'imageGrid6 imageGrid6';
   }
 }
 .imageGrid1 {
@@ -267,7 +267,7 @@
   transform: translateY(-100%);
   position: relative;
   background-position: center;
-  animation: $speedPageMovement $typeMovement;
+  animation: $speedBlocksMovement $typeMovement;
   animation-fill-mode: backwards;
   // animation-fill-mode: forwards;
   overflow: hidden;
@@ -293,7 +293,7 @@
   transform: translateY(-200%);
   position: relative;
   background-position: center;
-  animation: $speedPageMovement $typeMovement;
+  animation: $speedBlocksMovement $typeMovement;
   animation-fill-mode: backwards;
   // animation-fill-mode: forwards;
   overflow: hidden;
@@ -318,7 +318,7 @@
   transform: translateY(-100%);
   position: relative;
   background-position: center;
-  animation: $speedPageMovement $typeMovement;
+  animation: $speedBlocksMovement $typeMovement;
   animation-fill-mode: backwards;
   // animation-fill-mode: forwards;
   overflow: hidden;
@@ -343,7 +343,7 @@
   transform: translateY(0%);
   position: relative;
   background-position: center;
-  animation: $speedPageMovement $typeMovement;
+  animation: $speedBlocksMovement $typeMovement;
   animation-fill-mode: backwards;
   // animation-fill-mode: forwards;
   overflow: hidden;
@@ -453,37 +453,52 @@
     opacity: 0;
   }
 }
+// $firstDelay: 0.05s;
+// $secondDelay: 0.1s;
+// $thirdDelay: 0.15s;
+// $fourthDelay: 0.25s;
+// $fifthDelay: 0.3s;
+// $sixthDelay: 0.35s;
+// $seventhDelay: 0.4s;
+
+$firstDelay: 0.15s;
+$secondDelay: 0.3s;
+$thirdDelay: 0.45s;
+$fourthDelay: 0.6s;
+$fifthDelay: 0.75s;
+$sixthDelay: 0.9s;
+$seventhDelay: 1.05s;
 .image1 {
   // @include downToUpBackwards();
   animation-delay: 0s;
 }
 .image2 {
   // @include downToUpBackwards();
-  animation-delay: 0.05s;
+  animation-delay: $firstDelay;
 }
 .image3 {
   // @include downToUpBackwards();
-  animation-delay: 0.1s;
+  animation-delay: $secondDelay;
 }
 .image4 {
   // @include downToUpBackwards();
-  animation-delay: 0.15s;
+  animation-delay: $thirdDelay;
 }
 .image5 {
   // @include downToUpBackwards();
-  animation-delay: 0.25s;
+  animation-delay: $fourthDelay;
 }
 .image6 {
   // @include downToUpBackwards();
-  animation-delay: 0.3s;
+  animation-delay: $fifthDelay;
 }
 .image7 {
   // @include downToUpBackwards();
-  animation-delay: 0.35s;
+  animation-delay: $sixthDelay;
 }
 .image8 {
   // @include downToUpBackwards();
-  animation-delay: 0.4s;
+  animation-delay: $seventhDelay;
 }
 .imgBoxElementDown1 {
   // @include downToUpBackwards();
@@ -491,31 +506,31 @@
 }
 .imgBoxElementDown2 {
   // @include downToUpBackwards();
-  animation-delay: 0.05s;
+  animation-delay: $firstDelay;
 }
 .imgBoxElementDown3 {
   // @include downToUpBackwards();
-  animation-delay: 0.1s;
+  animation-delay: $secondDelay;
 }
 .imgBoxElementDown4 {
   // @include downToUpBackwards();
-  animation-delay: 0.15s;
+  animation-delay: $thirdDelay;
 }
 .imgBoxElementDown5 {
   // @include downToUpBackwards();
-  animation-delay: 0.25s;
+  animation-delay: $fourthDelay;
 }
 .imgBoxElementDown6 {
   // @include downToUpBackwards();
-  animation-delay: 0.3s;
+  animation-delay: $fifthDelay;
 }
 .imgBoxElementDown7 {
   // @include downToUpBackwards();
-  animation-delay: 0.35s;
+  animation-delay: $sixthDelay;
 }
 .imgBoxElementDown8 {
   // @include downToUpBackwards();
-  animation-delay: 0.4s;
+  animation-delay: $seventhDelay;
 }
 .imgBoxElementUp8 {
   // @include downToUpBackwards();
@@ -523,29 +538,29 @@
 }
 .imgBoxElementUp7 {
   // @include downToUpBackwards();
-  animation-delay: 0.05s;
+  animation-delay: $firstDelay;
 }
 .imgBoxElementUp6 {
   // @include downToUpBackwards();
-  animation-delay: 0.1s;
+  animation-delay: $secondDelay;
 }
 .imgBoxElementUp5 {
   // @include downToUpBackwards();
-  animation-delay: 0.15s;
+  animation-delay: $thirdDelay;
 }
 .imgBoxElementUp4 {
   // @include downToUpBackwards();
-  animation-delay: 0.25s;
+  animation-delay: $fourthDelay;
 }
 .imgBoxElementUp3 {
   // @include downToUpBackwards();
-  animation-delay: 0.3s;
+  animation-delay: $fifthDelay;
 }
 .imgBoxElementUp2 {
   // @include downToUpBackwards();
-  animation-delay: 0.35s;
+  animation-delay: $sixthDelay;
 }
 .imgBoxElementUp1 {
   // @include downToUpBackwards();
-  animation-delay: 0.4s;
+  animation-delay: $seventhDelay;
 }

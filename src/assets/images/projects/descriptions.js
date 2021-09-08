@@ -1,12 +1,18 @@
 // const links = [
 //   "https://luizphotography.web.app/",
 //   "http://canaldamariasanta.com/",
-//   "https://realestatemaxmix.web.app/",
+//   "https://maxmixrealestate.firebaseapp.com/",
 //   "https://taxdeclarationapp.web.app/",
 //   "https://www.tenoriamici.com/",
 // ];
 
 const Descriptions = [
+  {
+    title: 'Dr Consulta',
+    description:
+      'Fullstack developer with React, Next.js, TypeScript, JavaScript, Node.js and more',
+    href: 'https://www.drconsulta.com/',
+  },
   {
     title: 'Quizz App',
     description: 'React, JavaScript, HTML, CSS',
@@ -20,7 +26,7 @@ const Descriptions = [
   {
     title: 'Real Estate',
     description: 'React, JavaScript, HTML, CSS / SCSS',
-    href: 'https://realestatemaxmix.web.app/',
+    href: 'https://maxmixrealestate.firebaseapp.com/',
   },
   {
     title: 'Photographer',
@@ -43,22 +49,23 @@ const Descriptions = [
     description: 'React, JavaScript, HTML, CSS',
     href: 'https://www.tenoriamici.com/',
   },
-  {
-    title: 'Maria Santa',
-    description:
-      'Conceptual Creation, Video Creation / Edition, YouTube Channel Management',
-    href: 'https://www.youtube.com/mariasanta',
-  },
-  // {
-  //   title: "Max Mix Studio",
-  //   description:
-  //     "Music Recording / Mixing / Creation, Video Creation / Edition",
-  //   href: "https://www.youtube.com/MaxMixStudio/",
-  // },
 ];
 
 export default Descriptions;
 
+// OLD:
+// {
+//   title: 'Maria Santa',
+//   description:
+//     'Conceptual Creation, Video Creation / Edition, YouTube Channel Management',
+//   href: 'https://www.youtube.com/mariasanta',
+// },
+// {
+//   title: "Max Mix Studio",
+//   description:
+//     "Music Recording / Mixing / Creation, Video Creation / Edition",
+//   href: "https://www.youtube.com/MaxMixStudio/",
+// },
 // {
 //     title: "Album Con Amore",
 //     description: "Music Producer, Recording and Mixing",

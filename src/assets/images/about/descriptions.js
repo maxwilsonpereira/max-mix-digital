@@ -1,11 +1,3 @@
-// const links = [
-//   "https://luizphotography.web.app/",
-//   "http://canaldamariasanta.com/",
-//   "https://realestatemaxmix.web.app/",
-//   "https://taxdeclarationapp.web.app/",
-//   "https://www.tenoriamici.com/",
-// ];
-
 const Descriptions = [
   {
     title: 'LinkedIn',

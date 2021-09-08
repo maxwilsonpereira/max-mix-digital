@@ -47,7 +47,8 @@ export default function Contato(props) {
 
   function sendEmailHandler(e) {
     e.preventDefault();
-    const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+    const pattern =
+      /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
     if (!pattern.test(email)) {
       setMessageToUser(
         <div className={classes.MessageToUser}>
@@ -114,7 +115,7 @@ export default function Contato(props) {
                 {/* Em breve entrarei em contato. */}
               </div>
             );
-            console.log('SUCCESS!', response.status, response.text);
+            // console.log('SUCCESS!', response.status, response.text);
             setName('');
             setEmail('');
             setTelephone('');

@@ -1,38 +1,65 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import * as actionTypes from '../../store/actions/actionsIndex';
 
 // Swipe Detection
 // import Swipe from 'react-easy-swipe';
 // https://reactjsexample.com/easy-handler-for-common-swipe-operations/
 // npm install react-easy-swipe --save
-import Swipe from "react-easy-swipe";
+import Swipe from 'react-easy-swipe';
 
-import classes from "./style.module.scss";
-import classesIcon from "./styleIcon.module.scss";
+import classes from './style.module.scss';
+import classesIcon from './styleIcon.module.scss';
 
-import LogoMaxMix from "../logoMaxMix";
-import Menu from "../menu";
-import ArrowDirection from "../UI/arrowDirection";
+import LogoMaxMix from '../logoMaxMix';
+import Menu from '../menu';
+import ArrowDirection from '../UI/arrowDirection';
+import MatrixEffect from '../UI/matrixEffect';
 
-import Descriptions from "../../assets/images/about/descriptions";
+import Descriptions from '../../assets/images/about/descriptions';
 
-export default function AboutComponent() {
+function AboutComponent(props) {
   const [images, setImages] = useState([]);
-  const [showContent, setShowContent] = useState("dontShowContent");
+  const [showContent, setShowContent] = useState('dontShowContent');
   const [activeImage, setActiveImage] = useState(-1);
-  const [imgBoxPage, setImgBoxPage] = useState("imgBox");
+  const [imgBoxPage, setImgBoxPage] = useState('imgBox');
   const [arrowUp, setArrowUp] = useState(null);
   const [arrowDown, setArrowDown] = useState(null);
-  const [imbBoxElement, setImgBoxElement] = useState("imgBoxElementDown");
+  const [imbBoxElement, setImgBoxElement] = useState('imgBoxElementDown');
+  const [menuAndLogo, setMenuAndLogo] = useState(null);
 
   let wheelActive = false;
   // let pageMobile = 1;
-  let movementDirection = "down";
-  const transitionPaused = 1000;
+  let movementDirection = 'down';
+  const transitionPaused = 2500; // time to all transitions have ended
 
   useEffect(() => {
-    localStorage.setItem("currentPageProjects", 1);
-    localStorage.setItem("swipeActive", "false");
-    localStorage.setItem("directionDown", true);
+    props.onFirstPageTrue();
+    props.onLastPageFalse();
+
+    localStorage.setItem('currentPageProjects', 1);
+    localStorage.setItem('swipeActive', 'false');
+    localStorage.setItem('directionDown', true);
+
+    setTimeout(() => {
+      setMenuAndLogo(
+        <>
+          <Menu
+            wheelDirectionHandler={wheelDirectionHandler}
+            keyDownHandler={keyDownHandler}
+          />
+          <LogoMaxMix />
+        </>
+      );
+      setArrowDown(
+        <ArrowDirection
+          directionDown={true}
+          onlyShowMobile="onlyShowMobile"
+          arrowDownHandler={swipeUpHandler}
+          arrowUpHandler={swipeDownHandler}
+        />
+      );
+    }, 3500);
   }, []);
 
   // FIRST LOAD after 1,6 seconds (OVERTURE BLACK):
@@ -40,38 +67,30 @@ export default function AboutComponent() {
     let arrayAux = [];
     for (let i = 1; i < 7; i++) {
       arrayAux.push(
-        <div className={[classes.images, classes[`image${i}`]].join(" ")}>
+        <div className={[classes.images, classes[`image${i}`]].join(' ')}>
           <div className={classes.showBackground}></div>
         </div>
       );
     }
-    setArrowDown(
-      <ArrowDirection
-        directionDown={true}
-        onlyShowMobile="onlyShowMobile"
-        arrowDownHandler={swipeUpHandler}
-        arrowUpHandler={swipeDownHandler}
-      />
-    );
-    // OVERTURE black has 4 seconds:
+    // waiting OVERTURE black to come the img cubes:
     setTimeout(() => {
       setImages(arrayAux);
-    }, 1600);
+    }, 1800);
 
     setTimeout(() => {
-      window.addEventListener("wheel", wheelDirectionHandler);
-      document.addEventListener("keydown", keyDownHandler);
+      window.addEventListener('wheel', wheelDirectionHandler);
+      document.addEventListener('keydown', keyDownHandler);
       // TIME TO ALLOW THE FIRST GOING DOWN AFTER THE INTRO:
     }, 4000);
     // REMOVING THE EVENTLISTENERS on "componentWillUnmount":
     return function cleanup() {
-      window.removeEventListener("wheel", wheelDirectionHandler);
-      document.removeEventListener("keydown", keyDownHandler);
+      window.removeEventListener('wheel', wheelDirectionHandler);
+      document.removeEventListener('keydown', keyDownHandler);
     };
   }, []);
 
   function wheelDirectionHandler(event) {
-    const getCurPage = localStorage.getItem("currentPageProjects");
+    const getCurPage = localStorage.getItem('currentPageProjects');
     if (event.deltaY < 0) {
       arrowUpHandler(getCurPage);
     } else if (event.deltaY > 0) {
@@ -79,7 +98,7 @@ export default function AboutComponent() {
     }
   }
   function keyDownHandler(event) {
-    const getCurPage = localStorage.getItem("currentPageProjects");
+    const getCurPage = localStorage.getItem('currentPageProjects');
     // "ArrowRight", "ArrowLeft", "ArrowUp", or "ArrowDown"
     // const key = event.key;
     switch (event.key) {
@@ -89,23 +108,23 @@ export default function AboutComponent() {
       // case "ArrowRight":
       // Right pressed
       // break;
-      case "ArrowUp":
+      case 'ArrowUp':
         arrowUpHandler(getCurPage);
         break;
-      case "ArrowDown":
+      case 'ArrowDown':
         arrowDownHandler(getCurPage);
         break;
     }
   }
   // SWIPE FOR PAGE TO GOES DOWN
   function swipeUpHandler() {
-    const swipeActive = localStorage.getItem("swipeActive");
+    const swipeActive = localStorage.getItem('swipeActive');
     // setTimeout(() => {
-    if (swipeActive === "true") {
+    if (swipeActive === 'true') {
       return;
     } else {
       // localStorage.setItem("swipeActive", "true");
-      const getCurPage = localStorage.getItem("currentPageProjects");
+      const getCurPage = localStorage.getItem('currentPageProjects');
       arrowDownHandler(getCurPage);
       setTimeout(() => {
         // localStorage.setItem("swipeActive", "false");
@@ -115,13 +134,13 @@ export default function AboutComponent() {
   }
   // SWIPE FOR PAGE TO GOES UP
   function swipeDownHandler() {
-    const swipeActive = localStorage.getItem("swipeActive");
+    const swipeActive = localStorage.getItem('swipeActive');
     // setTimeout(() => {
-    if (swipeActive === "true") {
+    if (swipeActive === 'true') {
       return;
     } else {
       // localStorage.setItem("swipeActive", "true");
-      const getCurPage = localStorage.getItem("currentPageProjects");
+      const getCurPage = localStorage.getItem('currentPageProjects');
       arrowUpHandler(getCurPage);
       setTimeout(() => {
         // localStorage.setItem("swipeActive", "false");
@@ -136,32 +155,32 @@ export default function AboutComponent() {
       return;
     } else if (parseInt(currentPageProps) === 1) {
       wheelActive = true;
-      localStorage.setItem("swipeActive", "true");
-      movementDirection = "down";
+      localStorage.setItem('swipeActive', 'true');
+      movementDirection = 'down';
       setTimeout(() => {
-        setImgBoxPage("imbBoxSecondPageNoAnimation");
-        localStorage.setItem("currentPageProjects", 2);
+        setImgBoxPage('imbBoxSecondPageNoAnimation');
+        localStorage.setItem('currentPageProjects', 2);
         // pageMobile = 2;
         wheelActive = false;
-        localStorage.setItem("swipeActive", "false");
+        localStorage.setItem('swipeActive', 'false');
       }, transitionPaused);
-      setImgBoxPage("imbBoxSecondPage");
+      setImgBoxPage('imbBoxSecondPage');
     } else if (parseInt(currentPageProps) === 2) {
       wheelActive = true;
-      localStorage.setItem("swipeActive", "true");
-      if (movementDirection === "up") {
-        setImgBoxElement("imgBoxElementDown");
+      localStorage.setItem('swipeActive', 'true');
+      if (movementDirection === 'up') {
+        setImgBoxElement('imgBoxElementDown');
       }
-      movementDirection = "down";
+      movementDirection = 'down';
       setTimeout(() => {
-        setImgBoxPage("imbBoxThirdPageNoAnimation");
-        localStorage.setItem("currentPageProjects", 3);
+        setImgBoxPage('imbBoxThirdPageNoAnimation');
+        localStorage.setItem('currentPageProjects', 3);
         // pageMobile = 3;
         wheelActive = false;
-        localStorage.setItem("swipeActive", "false");
-        setImgBoxElement("imgBoxElementUp");
+        localStorage.setItem('swipeActive', 'false');
+        setImgBoxElement('imgBoxElementUp');
       }, transitionPaused);
-      setImgBoxPage("imbBoxThirdPage");
+      setImgBoxPage('imbBoxThirdPage');
       setTimeout(() => {
         setArrowUp(
           <ArrowDirection
@@ -181,32 +200,32 @@ export default function AboutComponent() {
       return;
     } else if (parseInt(currentPageProps) === 3) {
       wheelActive = true;
-      localStorage.setItem("swipeActive", "true");
-      movementDirection = "up";
+      localStorage.setItem('swipeActive', 'true');
+      movementDirection = 'up';
       setTimeout(() => {
-        setImgBoxPage("imbBoxBackToSecondPageNoAnimation");
-        localStorage.setItem("currentPageProjects", 2);
+        setImgBoxPage('imbBoxBackToSecondPageNoAnimation');
+        localStorage.setItem('currentPageProjects', 2);
         // pageMobile = 2;
         wheelActive = false;
-        localStorage.setItem("swipeActive", "false");
-      }, 1500);
-      setImgBoxPage("imbBoxBackToSecondPage");
+        localStorage.setItem('swipeActive', 'false');
+      }, transitionPaused);
+      setImgBoxPage('imbBoxBackToSecondPage');
     } else if (parseInt(currentPageProps) === 2) {
       wheelActive = true;
-      localStorage.setItem("swipeActive", "true");
-      if (movementDirection === "down") {
-        setImgBoxElement("imgBoxElementUp");
+      localStorage.setItem('swipeActive', 'true');
+      if (movementDirection === 'down') {
+        setImgBoxElement('imgBoxElementUp');
       }
-      movementDirection = "up";
+      movementDirection = 'up';
       setTimeout(() => {
-        setImgBoxPage("imgBox");
-        localStorage.setItem("currentPageProjects", 1);
+        setImgBoxPage('imgBox');
+        localStorage.setItem('currentPageProjects', 1);
         // pageMobile = 1;
         wheelActive = false;
-        localStorage.setItem("swipeActive", "false");
-        setImgBoxElement("imgBoxElementDown");
-      }, 1500);
-      setImgBoxPage("imbBoxBackToFirstPage");
+        localStorage.setItem('swipeActive', 'false');
+        setImgBoxElement('imgBoxElementDown');
+      }, transitionPaused);
+      setImgBoxPage('imbBoxBackToFirstPage');
       setTimeout(() => {
         setArrowDown(
           <ArrowDirection
@@ -222,6 +241,7 @@ export default function AboutComponent() {
   }
   return (
     <>
+      <MatrixEffect />
       <Swipe
         onSwipeUp={swipeUpHandler}
         onSwipeDown={swipeDownHandler}
@@ -230,11 +250,7 @@ export default function AboutComponent() {
         // onSwipeEnd={}
       >
         <span className={classes.fadeInMenuAndArrows}>
-          <Menu
-            wheelDirectionHandler={wheelDirectionHandler}
-            keyDownHandler={keyDownHandler}
-          />
-          <LogoMaxMix />
+          {menuAndLogo}
           {arrowUp}
           {arrowDown}
         </span>
@@ -242,25 +258,25 @@ export default function AboutComponent() {
           className={[
             classes.containerProjects,
             classes.fadeInAfterResized,
-          ].join(" ")}
+          ].join(' ')}
         >
           <div className={classes.grid}>
             {images.map((imageDiv, index) => (
               <div
                 key={index}
                 onMouseOver={() => {
-                  setShowContent("showContent");
+                  setShowContent('showContent');
                   setActiveImage(index);
                 }}
                 onMouseLeave={() => {
-                  setShowContent("dontShowContent");
+                  setShowContent('dontShowContent');
                   setActiveImage(-1);
                 }}
                 className={[
                   classes[imgBoxPage],
                   classes[`${imbBoxElement}${index + 1}`],
                   classes[`imageGrid${index + 1}`],
-                ].join(" ")}
+                ].join(' ')}
               >
                 <div
                   className={
@@ -296,3 +312,12 @@ export default function AboutComponent() {
     </>
   );
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onFirstPageTrue: () => dispatch(actionTypes.firstPageTrue()),
+    onLastPageFalse: () => dispatch(actionTypes.lastPageFalse()),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(AboutComponent);

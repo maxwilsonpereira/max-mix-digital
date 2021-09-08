@@ -1,78 +1,161 @@
-import React, { useState, memo } from "react";
+import React, { useState, useEffect } from 'react';
+// npm install classnames
+import cn from 'classnames';
+// import Button from './button';
+import Container from '@material-ui/core/Container';
+import Typography from '@material-ui/core/Typography';
+import useStyles from './styles';
 
-// npm i node-sass
-import classes from "./style.module.scss";
+import img1 from '../../assets/images/jpg/main1.jpg';
+import img2 from '../../assets/images/jpg/main2.jpg';
+import img3 from '../../assets/images/jpg/main3.jpg';
 
-const titles = [
-  "max mix digital",
-  "web development",
-  "media and sound",
-  "max mix digital",
-];
-const descriptions = [
-  "developing with passion",
-  "because every single detail matters",
-  "music and image arouse sensations",
-  "developing with passion",
-];
+const HomeCarousel = () => {
+  const classes = useStyles();
+  const [activeCarouselItem, setActiveCarouselItem] = useState(0);
+  const [data, setData] = useState([]);
+  // Local scope reference to prevent state changes issues
+  let index = activeCarouselItem;
+  const changeCarouselTime = 4000;
 
-function IntroFirstPage() {
-  const [zoomImg, setZoomImg] = useState([
-    "zooomOut",
-    "zooomOut",
-    "zooomOut",
-    "zooomOut",
-  ]);
-  const [stopAnimation, setStopAnimation] = useState("");
+  // const prevCarouselItem = () => {
+  //   const numberOfItems = data.length - 1;
+  //   if (numberOfItems > 0) {
+  //     index--;
+  //     // Reset the carousel
+  //     if (index < 0) {
+  //       index = numberOfItems;
+  //     }
+  //     setActiveCarouselItem(index);
+  //   }
+  // };
 
-  let resizeTimer;
-  window.addEventListener("resize", () => {
-    setStopAnimation("resizeAnimationStopper");
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-      setStopAnimation("");
-    }, 200);
-  });
+  useEffect(() => {
+    setTimeout(() => {
+      setData([
+        {
+          backgroundImage: img1,
+          title: 'Max Wilson Pereira',
+          color: 'ad6f36',
+          specialty: 'Developer',
+          // subtitle: '',
+        },
+        {
+          backgroundImage: img3,
+          title: 'Max Wilson Pereira',
+          color: '71a3c5',
+          specialty: 'Developing with passion',
+          // subtitle: '',
+        },
+        {
+          backgroundImage: img2,
+          title: 'Max Wilson Pereira',
+          color: 'e8cf7d',
+          specialty: 'An application is a work of art',
+          // subtitle: '',
+        },
+      ]);
+    }, 1000);
+  }, []);
 
-  function zoomInImg(index) {
-    // SPLICE()
-    // changes the contents of an array by removing or replacing
-    // existing elements and/or adding new elements in place.
-    // .splice(index, howManyElementsToRemove, NewElemet)
-    const auxArray = ["zooomOut", "zooomOut", "zooomOut", "zooomOut"];
-    auxArray.splice(index, 0, "imgZoomIn");
-    setZoomImg(auxArray);
-  }
+  useEffect(() => {
+    const t = setTimeout(() => nextCarouselItem(), changeCarouselTime);
+    return () => clearTimeout(t);
+  }, [data]);
+
+  useEffect(() => {
+    const t = setTimeout(() => nextCarouselItem(), changeCarouselTime);
+    return () => clearTimeout(t);
+  }, [activeCarouselItem]);
+
+  const nextCarouselItem = () => {
+    const numberOfItems = data.length - 1;
+    if (numberOfItems > 0) {
+      index++;
+      // Reset the carousel
+      if (index > numberOfItems) {
+        index = 0;
+      }
+      setActiveCarouselItem(index);
+    }
+  };
 
   return (
-    <div className={classes.containerAbsolute}>
-      <div id={classes.slider}>
-        <figure>
-          {titles.map((title, index) => (
-            <div
-              key={index}
-              className={[
-                classes[`backgroundImage${index + 1}`],
-                classes[zoomImg[index]],
-                classes[stopAnimation],
-              ].join(" ")}
-            >
-              <h1
-                onMouseOver={() => zoomInImg(index)}
-                onMouseOut={() => setZoomImg("imgZoomOut")}
+    <Container id="home-carousel" className={classes.root} maxWidth={false}>
+      <div id="home-carousel-items">
+        {data.map((item, i) => {
+          return (
+            <div className={classes.contentRoot}>
+              <div
+                className={classes.navigation}
+                style={
+                  activeCarouselItem === i
+                    ? {
+                        backgroundColor: `#${item.color}`,
+                      }
+                    : {}
+                }
+              />
+              <div
+                key={`carousel-item-${i}`}
+                style={{
+                  backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('${item.backgroundImage}')`,
+                  backgroundRepeat: 'no-repeat',
+                  backgroundAttachment: 'fixed',
+                  backgroundPosition: 'center',
+                }}
+                className={cn({
+                  [classes.item]: true,
+                  [classes.show]: activeCarouselItem === i,
+                  [classes.hide]: activeCarouselItem !== i,
+                })}
               >
-                {title}
-                <span className={classes.descriptions}>
-                  <br />
-                  {descriptions[index]}
-                </span>
-              </h1>
-            </div>
-          ))}
-        </figure>
-      </div>
-    </div>
-  );
-}
+                <div className={classes.itemContainer}>
+                  {/* {item.icon == '' ? (
+                    <></>
+                  ) : (
+                    <img
+                      className={classes.icon}
+                      src={item.icon}
+                      alt={item.title}
+                    />
+                  )} */}
+                  <Typography
+                    variant="h3"
+                    component="h3"
+                    gutterBottom
+                    className={classes.itemTitle}
+                  >
+                    {item.title}
+                    <br />
+                    <span style={{ color: `#${item.color}` }}>
+                      {item.specialty}
+                    </span>
+                  </Typography>
+                  <Typography
+                    className={classes.subtitle}
+                    variant="body1"
+                    paragraph
+                  >
+                    {item.subtitle}
+                  </Typography>
 
-export default memo(IntroFirstPage);
+                  {/* <div className={classes.itemButton}>
+                    <Button
+                      // onClick={}
+                      backgroundColor={`#${item.color}`}
+                    >
+                      {item.buttonText}
+                    </Button>
+                  </div> */}
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </Container>
+  );
+};
+
+export default HomeCarousel;

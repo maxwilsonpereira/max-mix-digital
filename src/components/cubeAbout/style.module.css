@@ -65,6 +65,33 @@
     opacity: 0.8;
   }
 }
+.smallVersion {
+  position: absolute;
+  z-index: 90;
+  top: 15% !important;
+  max-width: 40%;
+  transform-style: preserve-3d;
+  /* NEXT is about the area the cube will rotate: */
+  animation: loopSmallCube 30s linear infinite;
+}
+@keyframes loopSmallCube {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg) translateY(0%);
+  }
+  25% {
+    transform: rotateX(5deg) rotateY(80deg) translateY(10%);
+  }
+  60% {
+    transform: rotateX(10deg) rotateY(210deg) translateY(0%);
+  }
+  75% {
+    transform: rotateX(150deg) rotateY(280deg) translateY(10%);
+  }
+  100% {
+    transform: rotateX(360deg) rotateY(360deg) translateY(0%);
+  }
+}
+
 .cube img:nth-child(1) {
   transform: rotateY(0deg) translateZ(200px);
 }

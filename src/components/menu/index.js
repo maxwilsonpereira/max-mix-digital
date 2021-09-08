@@ -1,20 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 // npm i react-redux
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 // import classes from "./style.module.scss";
 
-import MenuBars from "./menuBars";
-import MenuPage from "./menuPage";
+import MenuBars from './menuBars';
+import MenuPage from './menuPage';
 
-import ContactComponent from "../contact";
-import ImageForComponent from "../UI/imageForComponent";
+import ContactComponent from '../contact';
+import ImageForComponent from '../UI/imageForComponent';
 
 function Menu(props) {
-  const [showMenu, setShowMenu] = useState("");
-  const [menuBars, setMenuBars] = useState("");
-  const [contactComponent, showContactComponent] = useState("");
-  const [imageForComponent, setImageForComponent] = useState("");
+  const [showMenu, setShowMenu] = useState('');
+  const [menuBars, setMenuBars] = useState('');
+  const [contactComponent, showContactComponent] = useState('');
+  const [imageForComponent, setImageForComponent] = useState('');
+
+  // useEffect(() => {
+  //   console.log('%c props: ', 'font-size: 35px; color: darkred', props);
+  // }, [props]);
 
   useEffect(() => {
     let isMounted = true; // note this flag denote mount status
@@ -47,31 +51,46 @@ function Menu(props) {
   }, [props.lastPage]);
 
   function showMenuHandler() {
-    window.removeEventListener("wheel", props.wheelDirectionHandler);
-    document.removeEventListener("keydown", props.keyDownHandler);
-    localStorage.setItem("menuIsActive", "true");
+    // SHOW LOGO:
+    document.getElementById('logo-maxmix').classList.add('logoFadein');
+    document.getElementById('logo-maxmix').classList.remove('logoHiding');
+
+    window.removeEventListener('wheel', props.wheelDirectionHandler);
+    document.removeEventListener('keydown', props.keyDownHandler);
+    localStorage.setItem('menuIsActive', 'true');
     setShowMenu(
       <MenuPage
-        fadeMenu={"fadeInMenu"}
-        enterLines={"enterLine"}
-        enterTexts={"enterTexts"}
+        fadeMenu={'fadeInMenu'}
+        enterLines={'enterLine'}
+        enterTexts={'enterTexts'}
         showContact={showContact}
       />
     );
   }
-  function hideMenuHandler() {
-    window.addEventListener("wheel", props.wheelDirectionHandler);
-    document.addEventListener("keydown", props.keyDownHandler);
-    localStorage.setItem("menuIsActive", "false");
+  function hideMenuHandler(firstPage) {
+    var pathArray = window.location.pathname.split('/');
+    // console.log(
+    //   '%c props.firstPage: ',
+    //   'font-size: 35px; color: darkred',
+    //   pathArray
+    // );
+    if (firstPage && pathArray[1].length === 0) {
+      // HIDE LOGO ONLY ON PAGE HOME:
+      document.getElementById('logo-maxmix').classList.add('logoHiding');
+      document.getElementById('logo-maxmix').classList.remove('logoFadein');
+    }
+    window.addEventListener('wheel', props.wheelDirectionHandler);
+    document.addEventListener('keydown', props.keyDownHandler);
+    localStorage.setItem('menuIsActive', 'false');
     setShowMenu(
       <MenuPage
-        fadeMenu={"fadeOutMenu"}
-        enterLines={"exitLine"}
-        enterTexts={"exitTexts"}
+        fadeMenu={'fadeOutMenu'}
+        enterLines={'exitLine'}
+        enterTexts={'exitTexts'}
       />
     );
     setTimeout(() => {
-      setShowMenu("");
+      setShowMenu('');
     }, 500);
   }
 

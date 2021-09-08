@@ -1,7 +1,10 @@
-@import "../../styles/animations.scss";
-@import "../../styles/texts.scss";
+// ********** IMAGES ARE HERE **********
+@import '../../assets/images/homePage/introPage4.scss';
+
+@import '../../styles/animations.scss';
+@import '../../styles/texts.scss';
 // VARIABLES
-@import "../../styles/variables.scss";
+@import '../../styles/variables.scss';
 
 // .gridLeftDown:hover {
 //   transition: 0.6s ease-in-out;
@@ -11,10 +14,14 @@
 //   filter: grayscale(0%) brightness(80%);
 //   background-image: url("../../assets/images/homePage/oportunities2.jpg");
 // }
-.image1 {
-  background-image: url("../../assets/images/homePage/opportunities1.jpg");
-  filter: grayscale(80%) brightness(80%);
-}
+// @keyframes leftGoesInFromLeft {
+//   0% {
+//     transform: translateX(-100%);
+//   }
+//   100% {
+//     transform: translateX(0%);
+//   }
+// }
 // .image2 {
 //   filter: grayscale(0%) brightness(80%);
 //   background-image: url("../../assets/images/homePage/opportunities2.jpg");
@@ -34,10 +41,11 @@
   grid-template-columns: 50% 50%;
   grid-template-rows: auto;
   grid-template-areas:
-    "leftUp rightArea"
-    "leftDown rightArea";
+    'leftUp rightArea'
+    'leftDown rightArea';
 }
 .gridLeftDown {
+  text-align: center;
   grid-area: leftDown;
   position: relative;
   overflow: hidden;
@@ -45,6 +53,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-image: linear-gradient(120deg, #1e4158, #132e41);
   // TRANSITIONS PROVOKE IMAGE TO BOUNCE OUT AND IN! DONT USE HERE:
   // transition: 0.6s ease-in-out;
   // -webkit-transition: 0.6s ease-in-out;
@@ -63,9 +72,13 @@
   // z-index: 14;
   grid-area: leftUp;
   position: relative;
-  background-color: rgb(0, 69, 78);
-  //   overflow: hidden;
+  background-image: linear-gradient(120deg, #185e4d, #165546);
+  // background-image: linear-gradient(120deg, #525252, #1f1e1e);
   animation: $speedPageMovement $typeMovement;
+}
+.sentences {
+  @include sentencesFont();
+  color: #082235;
 }
 .video {
   object-fit: cover;
@@ -103,7 +116,7 @@
   @include rightGoesInFromRight();
 }
 .noMovement .gridLeftUp h1 {
-  @include textComeUpRightToLeft2();
+  @include textAnimationAgain();
 }
 // ANIMATIONS EXIT PAGE 4:
 .exitPage4 .gridLeftUp {
@@ -114,4 +127,181 @@
 }
 .exitPage4 .gridRight {
   @include rightGoesOutRight();
+}
+
+// SKILLS CLASSES:
+.skillsContainer {
+  overflow: hidden;
+  padding: 40px;
+  margin-top: 120px;
+  @media (max-width: 700px) {
+    margin-top: 80px;
+    padding: 20px;
+  }
+  @media (max-height: 720px) {
+    // GALAXY S9:
+    margin-top: 40px;
+    padding: 20px;
+    -webkit-transform: scale(1, 0.8);
+    -moz-transform: scale(1, 0.8);
+    -ms-transform: scale(1, 0.8);
+    transform: scale(1, 0.8);
+  }
+  // @media (max-height: 600px) {
+  //   margin-top: 0px;
+
+  //   -webkit-transform: scale(1, 0.6);
+  //   -moz-transform: scale(1, 0.6);
+  //   -ms-transform: scale(1, 0.6);
+  //   transform: scale(1, 0.6);
+  // }
+  @media (max-height: 330px) {
+    display: none;
+  }
+}
+.skillNameFont {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: bold;
+  font-size: 40px;
+  margin-bottom: 5px;
+  overflow: hidden;
+  @media (max-width: 720px) {
+    font-size: 6vw;
+  }
+  @media (max-width: 600px) {
+    font-size: 7vw;
+  }
+}
+.skillLevel {
+  width: 100%;
+  height: 8px;
+  margin-bottom: 20px;
+  background-color: rgb(255, 255, 255);
+  @media (max-width: 1000px) {
+    height: 0.8vw;
+  }
+  @media (max-width: 800px) {
+    height: 1.2vw;
+  }
+  @media (max-height: 500px) {
+    display: none;
+  }
+}
+.skillNameFont {
+  animation: fadeInNames 2s ease-in-out;
+}
+@keyframes fadeInNames {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+// JAVASCRIPT
+.skillNameFont0 {
+  color: #f7df1e;
+}
+.skill0 {
+  background-color: #f7df1e;
+}
+// TYPESCRIPT
+.skillNameFont1 {
+  color: #3178c6;
+}
+.skill1 {
+  background-color: #3178c6;
+}
+// REACT
+.skillNameFont2 {
+  color: #61dafb;
+}
+.skill2 {
+  background-color: #61dafb;
+}
+// ANGULAR
+.skillNameFont3 {
+  color: #dd0031;
+}
+.skill3 {
+  background-color: #dd0031;
+}
+// HTML
+.skillNameFont4 {
+  color: #e44d26;
+}
+.skill4 {
+  background-color: #e44d26;
+}
+// CSS
+.skillNameFont5 {
+  color: #214ce5;
+}
+.skill5 {
+  background-color: #214ce5;
+}
+// NODE.JS
+.skillNameFont6 {
+  color: #43853d;
+}
+.skill6 {
+  background-color: #43853d;
+}
+
+@for $i from 0 through 2 {
+  .skill#{$i} {
+    animation: loadingLinesGrade10 2.5s ease-in-out;
+    animation-delay: #{$i * 0.05}s;
+    animation-fill-mode: backwards;
+  }
+}
+@for $i from 4 through 5 {
+  .skill#{$i} {
+    animation: loadingLinesGrade10 2s ease-in-out;
+    animation-delay: #{$i * 0.05}s;
+    animation-fill-mode: backwards;
+  }
+}
+// REACT[0] / JAVASCRIPT[1] / TYPESCRIPT[2] / HTML[4] / CSSS[5]
+@keyframes loadingLinesGrade10 {
+  0% {
+    width: 0%;
+    opacity: 0;
+  }
+  10% {
+    width: 0%;
+    opacity: 0;
+  }
+  80% {
+    opacity: 1;
+    width: 70%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+// ANGULAR[3] / NODE.JS[6]
+.skill3,
+.skill6 {
+  animation: loadingLinesGrade8 2.5s ease-in-out;
+  animation-delay: 3 * 0.05s;
+  animation-fill-mode: backwards;
+  width: 80%;
+}
+
+@keyframes loadingLinesGrade8 {
+  0% {
+    width: 0%;
+    opacity: 0;
+  }
+  10% {
+    width: 0%;
+    opacity: 0;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    width: 80%;
+  }
 }
