@@ -1,3 +1,7 @@
+.matrix-root {
+  background: transparent;
+  z-index: 0;
+}
 canvas {
   display: block;
   position: absolute;

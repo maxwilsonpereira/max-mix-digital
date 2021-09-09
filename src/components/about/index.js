@@ -37,7 +37,7 @@ function AboutComponent(props) {
     props.onFirstPageTrue();
     props.onLastPageFalse();
 
-    localStorage.setItem('currentPageProjects', 1);
+    localStorage.setItem('currentPageAbout', 1);
     localStorage.setItem('swipeActive', 'false');
     localStorage.setItem('directionDown', true);
 
@@ -90,7 +90,7 @@ function AboutComponent(props) {
   }, []);
 
   function wheelDirectionHandler(event) {
-    const getCurPage = localStorage.getItem('currentPageProjects');
+    const getCurPage = localStorage.getItem('currentPageAbout');
     if (event.deltaY < 0) {
       arrowUpHandler(getCurPage);
     } else if (event.deltaY > 0) {
@@ -98,7 +98,7 @@ function AboutComponent(props) {
     }
   }
   function keyDownHandler(event) {
-    const getCurPage = localStorage.getItem('currentPageProjects');
+    const getCurPage = localStorage.getItem('currentPageAbout');
     // "ArrowRight", "ArrowLeft", "ArrowUp", or "ArrowDown"
     // const key = event.key;
     switch (event.key) {
@@ -124,7 +124,7 @@ function AboutComponent(props) {
       return;
     } else {
       // localStorage.setItem("swipeActive", "true");
-      const getCurPage = localStorage.getItem('currentPageProjects');
+      const getCurPage = localStorage.getItem('currentPageAbout');
       arrowDownHandler(getCurPage);
       setTimeout(() => {
         // localStorage.setItem("swipeActive", "false");
@@ -140,7 +140,7 @@ function AboutComponent(props) {
       return;
     } else {
       // localStorage.setItem("swipeActive", "true");
-      const getCurPage = localStorage.getItem('currentPageProjects');
+      const getCurPage = localStorage.getItem('currentPageAbout');
       arrowUpHandler(getCurPage);
       setTimeout(() => {
         // localStorage.setItem("swipeActive", "false");
@@ -159,7 +159,7 @@ function AboutComponent(props) {
       movementDirection = 'down';
       setTimeout(() => {
         setImgBoxPage('imbBoxSecondPageNoAnimation');
-        localStorage.setItem('currentPageProjects', 2);
+        localStorage.setItem('currentPageAbout', 2);
         // pageMobile = 2;
         wheelActive = false;
         localStorage.setItem('swipeActive', 'false');
@@ -174,7 +174,7 @@ function AboutComponent(props) {
       movementDirection = 'down';
       setTimeout(() => {
         setImgBoxPage('imbBoxThirdPageNoAnimation');
-        localStorage.setItem('currentPageProjects', 3);
+        localStorage.setItem('currentPageAbout', 3);
         // pageMobile = 3;
         wheelActive = false;
         localStorage.setItem('swipeActive', 'false');
@@ -204,7 +204,7 @@ function AboutComponent(props) {
       movementDirection = 'up';
       setTimeout(() => {
         setImgBoxPage('imbBoxBackToSecondPageNoAnimation');
-        localStorage.setItem('currentPageProjects', 2);
+        localStorage.setItem('currentPageAbout', 2);
         // pageMobile = 2;
         wheelActive = false;
         localStorage.setItem('swipeActive', 'false');
@@ -219,7 +219,7 @@ function AboutComponent(props) {
       movementDirection = 'up';
       setTimeout(() => {
         setImgBoxPage('imgBox');
-        localStorage.setItem('currentPageProjects', 1);
+        localStorage.setItem('currentPageAbout', 1);
         // pageMobile = 1;
         wheelActive = false;
         localStorage.setItem('swipeActive', 'false');
