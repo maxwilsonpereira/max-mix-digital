@@ -14,7 +14,6 @@ import classesIcon from './styleIcon.module.scss';
 import LogoMaxMix from '../logoMaxMix';
 import Menu from '../menu';
 import ArrowDirection from '../UI/arrowDirection';
-import MatrixEffect from '../UI/matrixEffect';
 
 import Descriptions from '../../assets/images/about/descriptions';
 
@@ -241,7 +240,6 @@ function AboutComponent(props) {
   }
   return (
     <>
-      <MatrixEffect />
       <Swipe
         onSwipeUp={swipeUpHandler}
         onSwipeDown={swipeDownHandler}

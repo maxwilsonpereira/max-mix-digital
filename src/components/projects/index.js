@@ -15,7 +15,6 @@ import LogoMaxMix from '../logoMaxMix';
 
 import Menu from '../menu';
 import ArrowDirection from '../UI/arrowDirection';
-import MatrixEffect from '../UI/matrixEffect';
 import Descriptions from '../../assets/images/projects/descriptions';
 
 function ProjectsComponent(props) {
@@ -245,7 +244,6 @@ function ProjectsComponent(props) {
 
   return (
     <>
-      <MatrixEffect />
       <Swipe
         onSwipeUp={swipeUpHandler}
         onSwipeDown={swipeDownHandler}
