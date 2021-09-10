@@ -13,7 +13,7 @@ const useStyles = makeStyles(() =>
       overflow: 'hidden',
       paddingTop: theme.spacing(2),
       paddingBottom: theme.spacing(4),
-      backgroundColor: '#303030',
+      // backgroundColor: '#303030',
       zIndex: 0,
     },
     contentRoot: {

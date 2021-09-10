@@ -32,7 +32,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  filter: brightness(0.7) grayscale(30%);
+  filter: brightness(0.8) grayscale(30%);
   background-image: linear-gradient(120deg, #459b87, #22725f);
 }
 .cubeContainer {
@@ -74,7 +74,7 @@
   position: relative;
   // background-image: linear-gradient(120deg, #459b87, #22725f);
   // background-image: linear-gradient(220deg, #a34238, #803c33);
-  background-image: linear-gradient(120deg, #09334e, #052235);
+  background-image: linear-gradient(120deg, #2f5a77, #1b425e);
 }
 .gridRightUp h1 {
   @include textH1Messages();

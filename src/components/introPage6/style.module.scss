@@ -23,7 +23,8 @@
 }
 .gridLeft {
   grid-area: leftFull;
-  background-image: linear-gradient(220deg, #6d3833, #6b2419);
+  filter: brightness(0.8) grayscale(30%);
+  background-image: linear-gradient(120deg, #459b87, #22725f);
   position: relative;
   height: $heightGlobal;
   // width: 100vw;
@@ -69,13 +70,13 @@
   text-align: center;
   grid-area: grid2LeftFull;
   position: relative;
-  background-image: linear-gradient(220deg, #1a5277, #0e2e42);
+  background-image: linear-gradient(120deg, #2f5a77, #1b425e);
   height: $heightGlobal;
   // width: 100vw;
 }
 .sentences {
   @include sentencesFont();
-  color: #081f2e;
+  color: #0d334d;
 }
 .grid2Right {
   grid-area: grid2RightFull;

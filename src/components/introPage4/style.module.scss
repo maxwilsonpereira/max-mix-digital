@@ -53,7 +53,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: linear-gradient(120deg, #1e4158, #132e41);
+  background-image: linear-gradient(120deg, #2f5a77, #1b425e);
   // TRANSITIONS PROVOKE IMAGE TO BOUNCE OUT AND IN! DONT USE HERE:
   // transition: 0.6s ease-in-out;
   // -webkit-transition: 0.6s ease-in-out;
@@ -72,13 +72,12 @@
   // z-index: 14;
   grid-area: leftUp;
   position: relative;
-  background-image: linear-gradient(120deg, #185e4d, #165546);
-  // background-image: linear-gradient(120deg, #525252, #1f1e1e);
+  background-image: linear-gradient(120deg, #8d7b2c, #6e5d0f);
   animation: $speedPageMovement $typeMovement;
 }
 .sentences {
   @include sentencesFont();
-  color: #082235;
+  color: #0d334d;
 }
 .video {
   object-fit: cover;

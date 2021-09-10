@@ -99,7 +99,7 @@ const HomeCarousel = () => {
               <div
                 key={`carousel-item-${i}`}
                 style={{
-                  backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('${item.backgroundImage}')`,
+                  backgroundImage: `linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3)), url('${item.backgroundImage}')`,
                   backgroundRepeat: 'no-repeat',
                   backgroundAttachment: 'fixed',
                   backgroundPosition: 'center',
