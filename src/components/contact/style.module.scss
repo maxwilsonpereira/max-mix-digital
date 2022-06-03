@@ -11,9 +11,8 @@ $fontColor: #d6d6d6;
   z-index: 30;
   max-width: 500px;
   margin: 0 auto !important;
-  // padding: 50px 0;
-  // top: 30px;
-  // top: 40%;
+  padding: 50px 0;
+  top: -100px;
   left: 50%;
   transform: translate(-50%, 0%);
   width: 90%;
@@ -133,8 +132,8 @@ textarea {
   min-height: 120px;
   resize: none;
 }
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }

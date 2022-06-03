@@ -37,7 +37,7 @@ const HomeCarousel = () => {
           backgroundImage: img1,
           title: 'Max Wilson Pereira',
           color: 'ad6f36',
-          specialty: 'Developer',
+          specialty: 'Software engineer',
           // subtitle: '',
         },
         {

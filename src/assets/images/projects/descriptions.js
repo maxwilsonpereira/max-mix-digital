@@ -8,46 +8,46 @@
 
 const Descriptions = [
   {
-    title: 'Dr Consulta',
+    title: "Dr Consulta",
     description:
-      'Fullstack developer with React, Next.js, TypeScript, JavaScript, Node.js and more',
-    href: 'https://www.drconsulta.com/',
+      "Fullstack developer with React, Next.js, TypeScript, JavaScript, Node.js and more",
+    href: "https://www.drconsulta.com/",
   },
   {
-    title: 'Quizz App',
-    description: 'React, JavaScript, HTML, CSS',
-    href: 'https://canaldamariasanta.com/',
+    title: "Quizz App",
+    description: "React, JavaScript, HTML, CSS",
+    href: "https://canalmariasanta.web.app/",
   },
   {
-    title: 'Tax Declaration',
-    description: 'React, JavaScript, HTML, CSS, Node.js, MongoDB',
-    href: 'https://taxdeclarationapp.web.app/',
+    title: "Tax Declaration",
+    description: "React, JavaScript, HTML, CSS, Node.js, MongoDB",
+    href: "https://taxdeclarationapp.web.app/",
   },
   {
-    title: 'Real Estate',
-    description: 'React, JavaScript, HTML, CSS / SCSS',
-    href: 'https://maxmixrealestate.firebaseapp.com/',
+    title: "Real Estate",
+    description: "React, JavaScript, HTML, CSS / SCSS",
+    href: "https://maxmixrealestate.firebaseapp.com/",
   },
   {
-    title: 'Photographer',
-    description: 'React, JavaScript, HTML, CSS / SCSS',
-    href: 'https://luizphotography.web.app/',
+    title: "Photographer",
+    description: "React, JavaScript, HTML, CSS / SCSS",
+    href: "https://luizphotography.web.app/",
   },
   {
-    title: 'GitHub Developers',
+    title: "GitHub Developers",
     description:
-      'React, JavaScript, HTML, CSS / SCSS, Node.js, MongoDB, GitHub API, Facebook API, SendGrid',
-    href: 'https://githubdevsapp.web.app/',
+      "React, JavaScript, HTML, CSS / SCSS, Node.js, MongoDB, GitHub API, Facebook API, SendGrid",
+    href: "https://githubdevsapp.web.app/",
   },
   {
-    title: 'Max Mix',
-    description: 'React, JavaScript, HTML, CSS / SCSS',
-    href: 'https://maxmix.web.app/',
+    title: "Max Mix",
+    description: "React, JavaScript, HTML, CSS / SCSS",
+    href: "https://maxmix.web.app/",
   },
   {
-    title: 'Music Group',
-    description: 'React, JavaScript, HTML, CSS',
-    href: 'https://www.tenoriamici.com/',
+    title: "Music Group",
+    description: "React, JavaScript, HTML, CSS",
+    href: "https://www.tenoriamici.com/",
   },
 ];
 

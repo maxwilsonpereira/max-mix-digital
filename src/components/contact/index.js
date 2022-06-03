@@ -1,28 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 // EMailJS: look file .env.local
-import emailjs from 'emailjs-com';
+import emailjs from "emailjs-com";
 
 // Smooth Scroll to Anchor:
 // npm i react-anchor-link-smooth-scroll
 // https://www.npmjs.com/package/react-anchor-link-smooth-scroll
 // import AnchorLink from "react-anchor-link-smooth-scroll";
 
-import classes from './style.module.scss';
-import Button from '../UI/button';
+import classes from "./style.module.scss";
+import Button from "../UI/button";
 // npm i @material-ui/core
-import CircularProgress from '@material-ui/core/CircularProgress';
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 // npm i react-icons
 // https://react-icons.github.io/react-icons/
-import { MdEmail } from 'react-icons/md';
-import { MdCall } from 'react-icons/md';
+import { MdEmail } from "react-icons/md";
+import { MdCall } from "react-icons/md";
 
 export default function Contato(props) {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [telephone, setTelephone] = useState('');
-  const [message, setMessage] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [telephone, setTelephone] = useState("");
+  const [message, setMessage] = useState("");
   const [messageToUser, setMessageToUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -42,13 +42,14 @@ export default function Contato(props) {
   }, [messageToUser]);
 
   function sendEmailHandler(e) {
+    setMessageToUser("");
     e.preventDefault();
     const pattern =
       /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
     if (!pattern.test(email)) {
       setMessageToUser(
         <div className={classes.MessageToUser}>
-          Please fill in all fields correctly
+          please fill in all fields correctly
           {/* Favor preencher todos os campos corretamente. */}
         </div>
       );
@@ -56,7 +57,7 @@ export default function Contato(props) {
     } else if (name.length < 3) {
       setMessageToUser(
         <div className={classes.MessageToUser}>
-          Minimum 3 characters for name
+          minimum 3 characters for name
           {/* Mínimo 3 caracteres para nome. */}
         </div>
       );
@@ -64,7 +65,7 @@ export default function Contato(props) {
     } else if (telephone.length > 1 && telephone.length < 6) {
       setMessageToUser(
         <div className={classes.MessageToUser}>
-          Minimum 6 characters for phone
+          minimum 6 characters for phone
           {/* Mínimo 6 caracteres para telefone. */}
         </div>
       );
@@ -72,7 +73,7 @@ export default function Contato(props) {
     } else if (message.length < 10) {
       setMessageToUser(
         <div className={classes.MessageToUser}>
-          Minimum 10 characters for message
+          minimum 10 characters for message
           {/* Mínimo 10 caracteres para mensagem. */}
         </div>
       );
@@ -85,15 +86,15 @@ export default function Contato(props) {
         from_name: name,
         from_email: email,
         from_telefone: telephone,
-        to_name: 'maxwilsonpereira@gmail.com',
+        to_name: "maxwilsonpereira@gmail.com",
         message: message,
       };
       emailjs
         .send(
           // SERVICE ID:
-          'gmail',
+          "gmail",
           // TEMPLATE ID (get at emailjs.com / Email Templates):
-          'max_template_2',
+          "max_template_2",
           // PARAMS:
           templateParams,
           // USER ID (get at emailjs.com / Account/API KEYS):
@@ -101,35 +102,32 @@ export default function Contato(props) {
         )
         .then(
           // FROM: https://www.emailjs.com/docs/sdk/send/
-          function (response) {
+          function (res) {
             setIsLoading(false);
             setMessageToUser(
               <div className={classes.MessageToUser}>
-                Thank you for your message.
-                {/* Mensagem enviada com sucesso! */}
-                <br />I will contact you soon.
-                {/* Em breve entrarei em contato. */}
+                Thank you for your message! I will contact you soon...
               </div>
             );
             // console.log('SUCCESS!', response.status, response.text);
-            setName('');
-            setEmail('');
-            setTelephone('');
-            setMessage('');
+            setName("");
+            setEmail("");
+            setTelephone("");
+            setMessage("");
+            console.log("RESPONSE: ", res);
           },
           function (err) {
             setIsLoading(false);
             setMessageToUser(
               <div className={classes.MessageToUser}>
-                Service currently unavailable
-                {/* Serviço indisponível no momento. */}
-                <br />
-                Please contact us by email or phone
-                {/* Favor entrar em contato por e-mail ou telefone. */}
+                service currently unavailable, please contact me via my personal
+                email
               </div>
             );
+            console.log("ERROR: ", err);
           }
-        );
+        )
+        .catch((err) => console.log("err: ", err));
     }
   }
   function enterKeyPressedHandler(event) {
@@ -145,7 +143,7 @@ export default function Contato(props) {
     // <div className={classes[props.closeFormClass]}>
     <div
       className={[classes.containerContact, classes[props.closeFormClass]].join(
-        ' '
+        " "
       )}
     >
       <div className={classes.contactGrid}>
@@ -162,7 +160,7 @@ export default function Contato(props) {
             maxwilsonpereira@gmail.com
           </h3>
           <br />
-          <h3>
+          {/* <h3>
             <MdCall
               className={classes.EmailLog}
               size={32}
@@ -170,10 +168,7 @@ export default function Contato(props) {
             />
             +43 6767357606
           </h3>
-          <br />
-          {/* <span className={classes.desktopOnly}> */}
-          {messageToUser}
-          {/* </span> */}
+          <br /> */}
         </div>
         <div id="anchorPoint">
           <input
@@ -229,7 +224,9 @@ export default function Contato(props) {
           {messageToUser}
         </span> */}
         </div>
-        <br />
+        {/* <span className={classes.desktopOnly}> */}
+        {messageToUser}
+        {/* </span> */}
       </div>
     </div>
     // </div>
